@@ -1,0 +1,401 @@
+Equipment_ID,Equipment_Name,Equipment_Type,Safety_Status,Installation_Date,Standard_ID
+1,Creamy Garlic Dressing,kettlebell,NeedFix,11/18/2024,1
+2,Electric Heat Pad,yoga mat,NeedFix,2/18/2025,2
+3,Black Bean Soup,yoga mat,NotWorking,8/17/2024,3
+4,Solar Garden Lights,rowing machine,NeedFix,4/4/2025,4
+5,French Bread,kettlebell,Fixed,11/18/2024,5
+6,Honey BBQ Ribs,resistance bands,NeedFix,8/8/2024,6
+7,LED Canopy Lights,kettlebell,NotWorking,5/15/2024,7
+8,Portable Air Conditioner,treadmill,NeedFix,1/1/2025,8
+9,Sesame Noodles,resistance bands,Fixed,11/24/2024,9
+10,Pet Travel Carrier,kettlebell,Fixed,8/10/2024,10
+11,Cold Brew Coffee Concentrate,resistance bands,NeedFix,5/7/2024,11
+12,Fresh Lemons,treadmill,NeedFix,3/11/2025,12
+13,Coconut Cream Pie Yogurt,exercise ball,NotWorking,7/20/2024,13
+14,Organic Black Beans,yoga mat,NotWorking,10/14/2024,14
+15,Dog Walking Waist Pack,pull-up bar,NeedFix,7/2/2024,15
+16,Energy Protein Bars,kettlebell,NeedFix,3/18/2025,16
+17,Garlic Butter Sauce,dumbbells,NotWorking,8/22/2024,17
+18,Smart Light Switch,rowing machine,NeedFix,2/23/2025,18
+19,Savory Quinoa Pudding,dumbbells,NeedFix,7/3/2024,19
+20,Coconut Chia Seed Pudding,treadmill,NeedFix,5/1/2024,20
+21,LED Table Lamp,dumbbells,NotWorking,9/17/2024,21
+22,Microfiber Cleaning Cloth Set,resistance bands,Fixed,3/1/2025,22
+23,Walnut Halves,exercise ball,NotWorking,11/2/2024,23
+24,Applewood Smoked Bacon,medicine ball,Fixed,4/21/2024,24
+25,Comfortable Bed Pillow,dumbbells,NeedFix,12/5/2024,25
+26,Smart Water Bottle with Hydration Reminder,medicine ball,NotWorking,4/21/2024,26
+27,Maple Pecan Pancake Mix,yoga mat,NotWorking,10/11/2024,27
+28,Balsamic Glaze,dumbbells,NotWorking,3/23/2025,28
+29,Honey BBQ Riblets,treadmill,NotWorking,6/3/2024,29
+30,Pet Hair Removal Roller,jump rope,NeedFix,3/16/2025,30
+31,Travel Laundry Bag,treadmill,Fixed,9/24/2024,31
+32,Vegetarian Stuffed Peppers,dumbbells,NotWorking,7/28/2024,32
+33,Handheld Vacuum,yoga mat,Fixed,9/20/2024,33
+34,Peanut Butter Cookies,resistance bands,NeedFix,11/9/2024,34
+35,Home Karaoke System,kettlebell,NeedFix,9/12/2024,35
+36,Cable Knit Cardigan,kettlebell,NotWorking,12/16/2024,36
+37,Sweet Pea Hummus,jump rope,NeedFix,5/3/2024,37
+38,Set of Silicone Cooking Utensils,resistance bands,Fixed,2/26/2025,38
+39,Whole Roasted Chicken,pull-up bar,Fixed,9/24/2024,39
+40,Miso Dressing,pull-up bar,NotWorking,4/21/2024,40
+41,Feta Cheese,pull-up bar,NotWorking,8/19/2024,41
+42,Chia Seeds,kettlebell,NotWorking,3/20/2025,42
+43,Folding Table,medicine ball,Fixed,3/18/2025,43
+44,Organic Apples,resistance bands,NotWorking,8/26/2024,44
+45,Wine Glasses,dumbbells,NotWorking,10/15/2024,45
+46,Leather Crossbody Bag,jump rope,Fixed,7/5/2024,46
+47,Mashed Sweet Potatoes,dumbbells,NeedFix,2/16/2025,47
+48,Ready-to-Eat Chili,yoga mat,NotWorking,1/21/2025,48
+49,Rice Noodles,dumbbells,NotWorking,8/8/2024,49
+50,Peach Fruit Cups,dumbbells,NotWorking,7/3/2024,50
+51,Foam Muscle Roller,dumbbells,NeedFix,10/22/2024,51
+52,Garlic Butter Sauce,treadmill,NeedFix,9/26/2024,52
+53,Mini Cordless Vacuum Cleaner,jump rope,NotWorking,6/15/2024,53
+54,Digital Meat Thermometer,jump rope,NotWorking,7/9/2024,54
+55,Acoustic Guitar,rowing machine,NeedFix,5/3/2024,55
+56,Self-Watering Planter,kettlebell,Fixed,4/27/2024,56
+57,Blackberry Jam,jump rope,NeedFix,5/16/2024,57
+58,Scented Candle Set,rowing machine,NeedFix,8/6/2024,58
+59,Almond Flour,pull-up bar,NotWorking,8/9/2024,59
+60,Reclining Camping Chair,exercise ball,Fixed,6/22/2024,60
+61,Smart LED Light Strip,pull-up bar,NeedFix,4/7/2024,61
+62,Garlic Parmesan Roasted Potatoes,rowing machine,NeedFix,12/17/2024,62
+63,Chickpea Salad,exercise ball,NotWorking,5/27/2024,63
+64,Gaming Mousepad,exercise ball,NeedFix,7/19/2024,64
+65,Fitness Mat,rowing machine,NeedFix,8/27/2024,65
+66,Wooden Puzzle Game,rowing machine,Fixed,9/18/2024,66
+67,Smart Air Purifier,dumbbells,NotWorking,9/23/2024,67
+68,Coconut Lime Rice,treadmill,NeedFix,5/3/2024,68
+69,USB Wall Charger,medicine ball,NeedFix,2/22/2025,69
+70,Electric Wax Warmer,dumbbells,NeedFix,1/30/2025,70
+71,Portable Solar Path Lights,dumbbells,Fixed,8/29/2024,71
+72,Garlic Butter Shrimp,jump rope,NeedFix,1/24/2025,72
+73,Roasted Chickpeas,rowing machine,NeedFix,4/7/2024,73
+74,Oven-Baked Potato Chips,kettlebell,NeedFix,4/10/2024,74
+75,Rice Pudding,resistance bands,Fixed,1/16/2025,75
+76,Portable Air Pump,yoga mat,Fixed,3/27/2025,76
+77,Smartphone Car Mount with Wireless Charging,rowing machine,Fixed,7/7/2024,77
+78,Ski Goggles,treadmill,NeedFix,1/7/2025,78
+79,Vegan Protein Powder,yoga mat,NotWorking,3/25/2025,79
+80,Classic Minestrone Soup,rowing machine,Fixed,8/19/2024,80
+81,Vegetarian Sausage Links,rowing machine,NeedFix,2/25/2025,81
+82,Pet Food Storage Container,jump rope,NotWorking,4/5/2025,82
+83,Grilled Vegetable Medley,medicine ball,Fixed,11/3/2024,83
+84,Vegan Taco Seasoning,treadmill,Fixed,4/11/2024,84
+85,Sustainable Wooden Toys,pull-up bar,Fixed,10/23/2024,85
+86,Outdoor Mosquito Repellent Lantern,dumbbells,NeedFix,5/17/2024,86
+87,Cranberry Lime Sparkling Water,pull-up bar,Fixed,7/13/2024,87
+88,Kids'' Gardening Tools Set,dumbbells,NotWorking,6/8/2024,88
+89,Infrared Space Heater,jump rope,NotWorking,12/12/2024,89
+90,Kids'' Activity Book,jump rope,NotWorking,4/5/2025,90
+91,Feta Cheese Crumbles,yoga mat,Fixed,3/24/2025,91
+92,Garlic Breadsticks,rowing machine,NotWorking,6/4/2024,92
+93,Caramel Sauce,jump rope,NotWorking,4/14/2024,93
+94,Multi-Cooker,pull-up bar,NeedFix,7/29/2024,94
+95,Maple Almond Butter,medicine ball,Fixed,10/15/2024,95
+96,Electric Egg Cooker,jump rope,NotWorking,1/28/2025,96
+97,Self-Massaging Pillow,kettlebell,Fixed,1/5/2025,97
+98,Radish Chips,kettlebell,NeedFix,1/26/2025,98
+99,Turmeric Ginger Tea,kettlebell,NotWorking,5/15/2024,99
+100,Peach Green Tea,resistance bands,NotWorking,4/21/2024,100
+101,Jump Rope with Counter,dumbbells,Fixed,4/12/2024,101
+102,Baked Potato Chips,kettlebell,Fixed,5/10/2024,102
+103,Winter Knit Beanie,treadmill,Fixed,5/29/2024,103
+104,Nutty Trail Mix,resistance bands,NeedFix,8/15/2024,104
+105,Portable Folding Picnic Table,treadmill,NotWorking,4/8/2024,105
+106,Laptop Sleeve,exercise ball,NeedFix,9/23/2024,106
+107,Wireless Gaming Mouse,exercise ball,NeedFix,2/13/2025,107
+108,Frozen Mixed Berries,resistance bands,Fixed,12/23/2024,108
+109,Organic Coconut Yogurt,treadmill,NeedFix,10/17/2024,109
+110,Wall Decals for Kids,treadmill,NeedFix,11/10/2024,110
+111,Yoga Strap,jump rope,Fixed,1/24/2025,111
+112,Essential Oils Diffuser Necklace,dumbbells,NeedFix,6/5/2024,112
+113,Kale Salad with Lemon Dressing,exercise ball,NeedFix,7/31/2024,113
+114,Tea Infuser,pull-up bar,Fixed,4/8/2024,114
+115,Adjustable Laptop Desk,exercise ball,NotWorking,10/24/2024,115
+116,Chili Lime Shrimp,jump rope,NotWorking,3/29/2025,116
+117,Puzzle Game Set,pull-up bar,NotWorking,9/29/2024,117
+118,Travel Eye Mask with Ear Plugs,kettlebell,NeedFix,4/10/2024,118
+119,Pesto Pasta Salad,exercise ball,Fixed,1/4/2025,119
+120,Pesto Pasta Salad,exercise ball,NotWorking,3/1/2025,120
+121,Herbal Garden Starter Kit,medicine ball,NotWorking,6/9/2024,121
+122,Crispy Chickpeas,exercise ball,NeedFix,11/6/2024,122
+123,Sporty Cap,treadmill,NeedFix,5/18/2024,123
+124,Cranberry Almond Biscotti,medicine ball,Fixed,5/16/2024,124
+125,Mini Electric Kettle,exercise ball,NeedFix,10/2/2024,125
+126,Lemon Pepper Seasoning,resistance bands,NotWorking,8/14/2024,126
+127,Lightweight Workout Tank,yoga mat,Fixed,10/28/2024,127
+128,Non-Toxic Concrete Sealer,medicine ball,NotWorking,4/11/2024,128
+129,Mini Indoor Hydroponic Garden,treadmill,NotWorking,4/17/2024,129
+130,Fleece Lined Leggings,jump rope,NeedFix,7/11/2024,130
+131,Ergonomic Mouse Pad with Wrist Support,kettlebell,Fixed,9/4/2024,131
+132,Screen Cleaning Kit,rowing machine,NotWorking,4/25/2024,132
+133,Kids'' Art Easel,kettlebell,NeedFix,12/6/2024,133
+134,Blackberry Compote,treadmill,Fixed,2/7/2025,134
+135,Organic Spinach,jump rope,Fixed,11/20/2024,135
+136,Jigsaw Puzzle,resistance bands,Fixed,3/3/2025,136
+137,Laptop Backpack,jump rope,Fixed,11/17/2024,137
+138,Two-Tier Fruit Basket,medicine ball,NotWorking,6/16/2024,138
+139,Sweet Potato and Chickpea Bowl,jump rope,NeedFix,7/12/2024,139
+140,Cranberry Juice,medicine ball,NeedFix,10/23/2024,140
+141,Vegan Mayonnaise,jump rope,Fixed,4/24/2024,141
+142,Cheesy Broccoli Soup Mix,resistance bands,NotWorking,10/29/2024,142
+143,Herbed Chicken Breast,pull-up bar,NeedFix,7/20/2024,143
+144,Foot Spa Bath Massager,dumbbells,NotWorking,11/12/2024,144
+145,Vegan chocolate chip cookies,kettlebell,NotWorking,11/28/2024,145
+146,Buttermilk Pancakes,dumbbells,Fixed,12/2/2024,146
+147,Winter Knit Beanie,yoga mat,NeedFix,7/21/2024,147
+148,Decorative LED Neon Sign,treadmill,NotWorking,12/15/2024,148
+149,Collapsible Storage Crates,medicine ball,NotWorking,9/19/2024,149
+150,Blue Denim Jeans,exercise ball,Fixed,4/21/2024,150
+151,Electric Food Slicer,medicine ball,NotWorking,1/28/2025,151
+152,Multi-Purpose Marine Rope,medicine ball,NotWorking,6/26/2024,152
+153,Herb Seasoned Rice,medicine ball,Fixed,7/22/2024,153
+154,Peanut Butter Granola,yoga mat,NeedFix,9/12/2024,154
+155,Wireless Keyboard and Mouse Combo,rowing machine,NeedFix,9/5/2024,155
+156,Pumpkin Spice Cookies,resistance bands,NeedFix,9/18/2024,156
+157,Car Diagnostic Scanner,exercise ball,NeedFix,2/22/2025,157
+158,Himalayan Pink Salt,rowing machine,Fixed,7/31/2024,158
+159,Puffed Rice Cake,jump rope,NotWorking,3/31/2025,159
+160,Artisan Bread,resistance bands,NotWorking,10/13/2024,160
+161,Ultraviolet Phone Sanitizer,exercise ball,NotWorking,9/24/2024,161
+162,Wireless Smart Plug,medicine ball,NotWorking,6/10/2024,162
+163,Cotton Pajama Set,resistance bands,NeedFix,1/24/2025,163
+164,Dog Car Seat Cover,jump rope,NeedFix,6/18/2024,164
+165,Adjustable Kneeling Pad,treadmill,NeedFix,7/9/2024,165
+166,High-Speed Hand Blender,dumbbells,NeedFix,10/22/2024,166
+167,Ranch Dressing,treadmill,Fixed,11/15/2024,167
+168,Pet Food Storage Container,yoga mat,NeedFix,5/26/2024,168
+169,Wrap Front Midi Skirt,jump rope,NotWorking,11/18/2024,169
+170,Yoga Strap,yoga mat,NeedFix,8/19/2024,170
+171,Set of Measuring Spoons,resistance bands,NeedFix,11/1/2024,171
+172,Vegan Taco Seasoning,resistance bands,Fixed,7/13/2024,172
+173,Classic Cheeseburger Mix,medicine ball,Fixed,6/11/2024,173
+174,Travel Makeup Organizer,dumbbells,NeedFix,12/19/2024,174
+175,Over-Ear Headphones,resistance bands,Fixed,7/4/2024,175
+176,Kids'' STEM Robotics Kit,dumbbells,NotWorking,8/2/2024,176
+177,Rice Pudding,exercise ball,NeedFix,4/7/2024,177
+178,Graphic Hoodie,jump rope,NotWorking,3/15/2025,178
+179,Garden Hoses with Expandable Features,yoga mat,NeedFix,1/16/2025,179
+180,Spicy Italian Sausage,kettlebell,Fixed,9/18/2024,180
+181,Comfort Flats,exercise ball,Fixed,8/3/2024,181
+182,Organic Fruit Salad,medicine ball,Fixed,4/8/2024,182
+183,Sesame Seeds,jump rope,Fixed,3/25/2025,183
+184,Portable Projector,kettlebell,Fixed,11/10/2024,184
+185,Elderberry Syrup Kit,jump rope,Fixed,11/26/2024,185
+186,Reusable Produce Bags Set,dumbbells,NotWorking,10/15/2024,186
+187,Pistachio Ice Cream,yoga mat,Fixed,9/20/2024,187
+188,Kids'' Learning Tablet,medicine ball,Fixed,2/22/2025,188
+189,Belted Trench Coat,yoga mat,NotWorking,4/4/2025,189
+190,Organic Coconut Water,pull-up bar,NotWorking,8/29/2024,190
+191,Dog Waste Bag Dispenser,pull-up bar,Fixed,2/2/2025,191
+192,Smart Home Security Camera,medicine ball,NeedFix,1/27/2025,192
+193,Chiffon Blouse,kettlebell,NotWorking,1/25/2025,193
+194,Repair Tool Set for Home Improvement,treadmill,Fixed,8/31/2024,194
+195,Outdoor Picnic Blanket,kettlebell,NeedFix,7/18/2024,195
+196,Tomato Paste,kettlebell,NotWorking,8/28/2024,196
+197,Casual Long Cardigan,rowing machine,Fixed,6/25/2024,197
+198,Honey Ginger Tea,rowing machine,NotWorking,4/7/2024,198
+199,Digital Food Scale,kettlebell,NeedFix,3/22/2025,199
+200,Toy Building Set,dumbbells,NotWorking,2/15/2025,200
+201,Frozen Mixed Vegetables,rowing machine,NotWorking,12/9/2024,201
+202,Peanut Butter Granola,dumbbells,NeedFix,12/25/2024,202
+203,Thai Basil Fried Rice,treadmill,NeedFix,1/7/2025,203
+204,Silicone Cooking Utensils Set,medicine ball,Fixed,12/11/2024,204
+205,Canvas Wall Art,yoga mat,NotWorking,8/18/2024,205
+206,LED Desk Light,pull-up bar,Fixed,10/13/2024,206
+207,Smartphone Tripod,medicine ball,Fixed,9/12/2024,207
+208,Body Pillow Case,yoga mat,Fixed,11/19/2024,208
+209,Jump Rope with Counter,yoga mat,Fixed,4/12/2024,209
+210,Sporty Slide Sandals,yoga mat,Fixed,8/4/2024,210
+211,Ramen Noodle Soup Cups,exercise ball,Fixed,4/24/2024,211
+212,Chocolate Chip Cliff Bars,yoga mat,NeedFix,5/12/2024,212
+213,Italian Sausage and Peppers,resistance bands,Fixed,12/3/2024,213
+214,Diced Tomatoes (canned),medicine ball,Fixed,7/12/2024,214
+215,Ergonomic Gaming Chair,medicine ball,NotWorking,5/12/2024,215
+216,Gardening Tools Set,yoga mat,NeedFix,2/24/2025,216
+217,Electric Ice Cream Maker,medicine ball,Fixed,6/4/2024,217
+218,Savory Oats,jump rope,Fixed,9/18/2024,218
+219,Motion Sensor Light,exercise ball,Fixed,3/1/2025,219
+220,Microfiber Cleaning Cloth Set,pull-up bar,NotWorking,9/13/2024,220
+221,Kettle Corn Popcorn,pull-up bar,Fixed,11/16/2024,221
+222,Chickpea Pasta,kettlebell,Fixed,4/18/2024,222
+223,Decorative Throw Blanket,medicine ball,NeedFix,4/18/2024,223
+224,Avocado Oil,resistance bands,NeedFix,8/21/2024,224
+225,Window Blinds,resistance bands,Fixed,7/10/2024,225
+226,Diced Tomatoes (canned),exercise ball,NotWorking,4/24/2024,226
+227,Pet Water Fountain with Filtration,yoga mat,Fixed,9/26/2024,227
+228,Craft Beer Mustard,medicine ball,Fixed,3/1/2025,228
+229,Dark Chocolate Covered Raisins,rowing machine,Fixed,6/16/2024,229
+230,Roasted Red Pepper Sauce,exercise ball,NotWorking,1/21/2025,230
+231,Smart Doorbell,treadmill,Fixed,12/7/2024,231
+232,Marinated Artichokes,medicine ball,Fixed,10/19/2024,232
+233,Portable Pet Water Bottle,pull-up bar,Fixed,11/11/2024,233
+234,Oven Mitts,treadmill,NeedFix,8/10/2024,234
+235,Ginger Turmeric Shots,treadmill,NotWorking,7/6/2024,235
+236,Pet Travel Bed,medicine ball,NotWorking,7/23/2024,236
+237,Home Cleaning Robot,medicine ball,Fixed,9/8/2024,237
+238,Chocolate Mint Protein Shake,dumbbells,NeedFix,3/3/2025,238
+239,Stylish Wireless Earbuds,medicine ball,Fixed,3/19/2025,239
+240,Kids'' Gardening Kit,pull-up bar,Fixed,6/10/2024,240
+241,Plant Growing Kit,treadmill,NotWorking,12/14/2024,241
+242,Oats,dumbbells,NeedFix,5/13/2024,242
+243,Ethical Wool Scarf,resistance bands,NotWorking,11/1/2024,243
+244,Digital Voice Recorder,yoga mat,NotWorking,1/17/2025,244
+245,Sliced Strawberries,medicine ball,Fixed,3/10/2025,245
+246,Vegetable Curry,pull-up bar,NotWorking,7/31/2024,246
+247,Wireless Security System,jump rope,NeedFix,1/14/2025,247
+248,Portable Solar Path Lights,dumbbells,NotWorking,8/19/2024,248
+249,Cheesy Broccoli Soup Mix,rowing machine,Fixed,4/12/2024,249
+250,Overnight Hiking Backpack,treadmill,Fixed,11/13/2024,250
+251,Outdoor Inflatable Pool,exercise ball,Fixed,6/15/2024,251
+252,Electric Hot Water Dispenser,dumbbells,NeedFix,7/14/2024,252
+253,Pest Control Traps,medicine ball,Fixed,8/31/2024,253
+254,Pet Travel Carrier,dumbbells,Fixed,1/10/2025,254
+255,Smart Thermostat with Wi-Fi,pull-up bar,Fixed,3/8/2025,255
+256,Paprika,dumbbells,NeedFix,5/26/2024,256
+257,Portable Blender,jump rope,NotWorking,11/27/2024,257
+258,Wireless Security Camera,treadmill,NotWorking,11/5/2024,258
+259,Dog Collar,exercise ball,NotWorking,8/24/2024,259
+260,Bike Helmet,pull-up bar,NotWorking,3/13/2025,260
+261,Gingerbread House Kit,jump rope,NotWorking,6/16/2024,261
+262,DIY Lip Balm Kit,yoga mat,NeedFix,4/18/2024,262
+263,Savory Breakfast Sausage,treadmill,NotWorking,3/7/2025,263
+264,Water Bottle with Built-in Fruit Infuser,exercise ball,NotWorking,4/14/2024,264
+265,Apple Cinnamon Instant Oatmeal,medicine ball,NotWorking,3/31/2025,265
+266,Coconut Rice,medicine ball,NeedFix,8/9/2024,266
+267,Travel Pillow,jump rope,NotWorking,12/20/2024,267
+268,Lemon Pepper Seasoning,medicine ball,NotWorking,7/8/2024,268
+269,Glass Water Bottle,rowing machine,Fixed,3/18/2025,269
+270,Granola,medicine ball,Fixed,6/25/2024,270
+271,Grass Fed Beef Patties,dumbbells,NeedFix,5/16/2024,271
+272,Vintage Graphic Tee,resistance bands,Fixed,6/23/2024,272
+273,Fresh Basil Pesto,dumbbells,Fixed,6/12/2024,273
+274,Ice Cream Maker,dumbbells,Fixed,7/9/2024,274
+275,Honey Nut Cheerios,yoga mat,NeedFix,11/14/2024,275
+276,Safety First Aid Kit,pull-up bar,Fixed,8/3/2024,276
+277,Miso Soup Starter,exercise ball,NeedFix,1/8/2025,277
+278,Mini Cordless Vacuum Cleaner,rowing machine,NotWorking,2/15/2025,278
+279,Creamy Avocado Dip,dumbbells,NotWorking,4/18/2024,279
+280,Car Seat Organizer,dumbbells,NeedFix,7/24/2024,280
+281,Wildflower Honey,treadmill,NeedFix,6/9/2024,281
+282,Mixed Nuts,medicine ball,NotWorking,9/24/2024,282
+283,Samoas Cookie Mix,medicine ball,NeedFix,1/8/2025,283
+284,Almond Coconut Granola,dumbbells,NeedFix,4/4/2025,284
+285,Non-Slip Yoga Socks,yoga mat,NeedFix,1/6/2025,285
+286,Lemon Sorbet,yoga mat,NotWorking,5/11/2024,286
+287,Patterned Knit Scarf,treadmill,NotWorking,1/30/2025,287
+288,Dog Frisbee Toy,yoga mat,NeedFix,10/5/2024,288
+289,Honey BBQ Riblets,exercise ball,NotWorking,5/5/2024,289
+290,Stuffed Bell Peppers,exercise ball,NotWorking,12/16/2024,290
+291,Desk Organizer Set,jump rope,NeedFix,12/17/2024,291
+292,LED Table Lamp,resistance bands,Fixed,8/20/2024,292
+293,Comfort Flats,kettlebell,Fixed,5/21/2024,293
+294,Ground Turkey,dumbbells,NeedFix,10/27/2024,294
+295,Set of Silicone Cooking Utensils,dumbbells,NeedFix,2/19/2025,295
+296,Organic Whole Grain Oats,dumbbells,NotWorking,6/10/2024,296
+297,Multi-Function Smartphone Holder,dumbbells,NeedFix,3/4/2025,297
+298,Roasted Vegetable Medley,kettlebell,NeedFix,12/14/2024,298
+299,Pet Safety Harness,jump rope,Fixed,1/23/2025,299
+300,Paprika,resistance bands,Fixed,11/19/2024,300
+301,Peanut Butter Cookies,medicine ball,NeedFix,7/28/2024,301
+302,Spicy Beef Taco Mix,resistance bands,NotWorking,9/22/2024,302
+303,Wall-Mounted Wine Rack,dumbbells,NeedFix,7/19/2024,303
+304,Self-Adhesive Wallpaper,resistance bands,NotWorking,8/22/2024,304
+305,Cotton Tote Bag Set,yoga mat,NotWorking,9/9/2024,305
+306,Kettle Corn Popcorn,resistance bands,Fixed,12/28/2024,306
+307,Wireless Charging Station,dumbbells,Fixed,7/1/2024,307
+308,Fleece Lined Leggings,dumbbells,NotWorking,2/8/2025,308
+309,Greek Yogurt,jump rope,NotWorking,7/15/2024,309
+310,Peach Green Tea,kettlebell,NeedFix,8/17/2024,310
+311,Crispy Kale Chips,treadmill,Fixed,7/5/2024,311
+312,Vegan Cheese,kettlebell,NotWorking,8/16/2024,312
+313,Rechargeable Battery Organizer,medicine ball,NotWorking,4/6/2025,313
+314,Vegan Chocolate Cake Mix,treadmill,NeedFix,3/31/2025,314
+315,Chocolate Fudge Brownie Mix,rowing machine,Fixed,9/21/2024,315
+316,Mini Indoor Herb Garden Kit,exercise ball,NeedFix,8/14/2024,316
+317,Ultraviolet Phone Sanitizer,resistance bands,NeedFix,1/22/2025,317
+318,Electric Kettle with Temperature Control,rowing machine,NotWorking,8/18/2024,318
+319,Himalayan Salt Grinder,exercise ball,Fixed,10/19/2024,319
+320,Slim Fit Chinos,treadmill,NeedFix,3/30/2025,320
+321,Quality Chef Apron,resistance bands,NeedFix,1/23/2025,321
+322,Fried Rice,medicine ball,NeedFix,12/31/2024,322
+323,Folding Pocket Knife,rowing machine,NeedFix,9/17/2024,323
+324,Board Game,resistance bands,NeedFix,5/26/2024,324
+325,Garlic & Herb Goat Cheese,medicine ball,Fixed,12/13/2024,325
+326,Organic Granola,kettlebell,NotWorking,2/11/2025,326
+327,Acoustic Guitar,exercise ball,NotWorking,8/18/2024,327
+328,Smartphone Holder for Car,treadmill,NotWorking,2/7/2025,328
+329,Almond Quinoa Salad,pull-up bar,NotWorking,5/17/2024,329
+330,Smartphone Gimbal Stabilizer,exercise ball,NeedFix,2/8/2025,330
+331,Adjustable Window Blind,pull-up bar,Fixed,11/25/2024,331
+332,Vanilla Bean Greek Yogurt,dumbbells,NeedFix,5/15/2024,332
+333,Pecan Pie Filling,rowing machine,Fixed,11/2/2024,333
+334,Flavored Popcorn Mix,medicine ball,NotWorking,4/5/2025,334
+335,Portable Solar Phone Charger,pull-up bar,Fixed,4/26/2024,335
+336,Spicy Thai Noodles,resistance bands,NeedFix,6/24/2024,336
+337,Vanilla Protein Powder,medicine ball,Fixed,6/15/2024,337
+338,Ranch Dressing,jump rope,NotWorking,1/12/2025,338
+339,Wireless HDMI Receiver,medicine ball,NeedFix,10/8/2024,339
+340,High-Pressure Handheld Shower Head,pull-up bar,NeedFix,5/8/2024,340
+341,Organic Green Lentils,medicine ball,Fixed,4/1/2025,341
+342,Self-Watering Planters,pull-up bar,NeedFix,9/17/2024,342
+343,Raspberry Vanilla Greek Yogurt,jump rope,NotWorking,11/12/2024,343
+344,Bicycle Repair Kit,dumbbells,NotWorking,5/3/2024,344
+345,Cranberry Almond Biscotti,rowing machine,NotWorking,2/26/2025,345
+346,Garlic & Herb Goat Cheese,medicine ball,Fixed,8/28/2024,346
+347,Skincare Fridge,dumbbells,NotWorking,9/20/2024,347
+348,Roasted Chickpeas,pull-up bar,NeedFix,4/25/2024,348
+349,Red Lentils,jump rope,Fixed,3/1/2025,349
+350,Frozen Acai Bowl,rowing machine,NeedFix,11/9/2024,350
+351,Honey Sriracha Chicken Bites,jump rope,Fixed,9/30/2024,351
+352,Vegetable Potstickers,resistance bands,Fixed,6/10/2024,352
+353,Board Game Storage,pull-up bar,NotWorking,6/17/2024,353
+354,Zucchini,rowing machine,NeedFix,12/28/2024,354
+355,Multifunctional Pocket Tool,dumbbells,Fixed,1/9/2025,355
+356,Vegan chocolate chip cookies,dumbbells,NotWorking,10/20/2024,356
+357,Instant Camera,rowing machine,NotWorking,12/1/2024,357
+358,Beef Jerky,jump rope,NeedFix,5/19/2024,358
+359,Coffee Subscription Service,kettlebell,Fixed,4/21/2024,359
+360,Tomato Basil Pasta Sauce,resistance bands,Fixed,3/4/2025,360
+361,Portable Pet Stroller,treadmill,NotWorking,2/17/2025,361
+362,Dried Fruit Medley,rowing machine,NeedFix,4/27/2024,362
+363,Wooden Kitchen Utensil Set,medicine ball,NeedFix,6/30/2024,363
+364,Portable Projector,treadmill,Fixed,7/28/2024,364
+365,Tomato Basil Pasta Sauce,jump rope,Fixed,5/14/2024,365
+366,Spiced Pumpkin Soup,dumbbells,NotWorking,6/25/2024,366
+367,Graphic Tee,pull-up bar,NeedFix,9/9/2024,367
+368,Sweetened Condensed Milk,kettlebell,NeedFix,7/7/2024,368
+369,Casual Long Cardigan,treadmill,NeedFix,10/27/2024,369
+370,Portable Leaf Blower,jump rope,Fixed,11/12/2024,370
+371,Luxury Yoga Mat,dumbbells,Fixed,7/15/2024,371
+372,Samsung Galaxy Smartwatch,treadmill,NotWorking,1/19/2025,372
+373,Ricotta Cheese,exercise ball,NotWorking,2/9/2025,373
+374,Classic Beef Chili,medicine ball,NotWorking,3/10/2025,374
+375,Garden Vegetable Chips,yoga mat,Fixed,9/30/2024,375
+376,Mini Projector,medicine ball,NotWorking,9/23/2024,376
+377,Smart Thermostat with Wi-Fi,exercise ball,Fixed,2/7/2025,377
+378,Wall Art Stickers,kettlebell,NotWorking,10/16/2024,378
+379,Hummus Variety Pack,rowing machine,NotWorking,8/21/2024,379
+380,Emergency Preparedness Kit,rowing machine,NotWorking,3/14/2025,380
+381,Eco-Friendly Yoga Mat,dumbbells,Fixed,2/27/2025,381
+382,Compact Digital Camera,exercise ball,NotWorking,2/15/2025,382
+383,Mashed Sweet Potatoes,kettlebell,Fixed,11/13/2024,383
+384,Cinnamon Roll Protein Bar,dumbbells,Fixed,1/19/2025,384
+385,Laptop Stand,yoga mat,NotWorking,2/18/2025,385
+386,Sweet Potato Fries,exercise ball,Fixed,12/24/2024,386
+387,Fire Roasted Salsa,exercise ball,Fixed,2/26/2025,387
+388,Bluetooth Tracker,kettlebell,NeedFix,10/16/2024,388
+389,Pet Hair Removal Brush,yoga mat,NotWorking,5/31/2024,389
+390,LED Strip Lights Kit,treadmill,NotWorking,8/20/2024,390
+391,Ice Cube Tray with Lid,yoga mat,NeedFix,9/22/2024,391
+392,Non-Toxic Concrete Sealer,treadmill,NotWorking,4/7/2024,392
+393,Electric Heat Pad,pull-up bar,NeedFix,1/16/2025,393
+394,Teriyaki Chicken Wings,treadmill,NotWorking,11/2/2024,394
+395,Matcha Green Tea Powder,kettlebell,NotWorking,2/4/2025,395
+396,Almond Joy Snack Bars,resistance bands,NotWorking,2/14/2025,396
+397,Over-The-Door Shoe Organizer,treadmill,NeedFix,2/20/2025,397
+398,Sunflower Seeds,treadmill,NeedFix,6/13/2024,398
+399,Toasted Coconut Granola,kettlebell,NotWorking,12/16/2024,399
+400,Adjustable Dumbbells,jump rope,NeedFix,1/19/2025,400

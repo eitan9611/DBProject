@@ -1,0 +1,11 @@
+-- מחיקת טבלאות עם תלות (מפתחות זרים)
+DROP TABLE Repairs CASCADE CONSTRAINTS;
+DROP TABLE Equipment_Standard CASCADE CONSTRAINTS;
+DROP TABLE Equipment_Usage CASCADE CONSTRAINTS;
+DROP TABLE Equipment_Malfunction CASCADE CONSTRAINTS;
+DROP TABLE Safety_Check CASCADE CONSTRAINTS;
+
+-- מחיקת טבלאות ראשיות
+DROP TABLE Equipment CASCADE CONSTRAINTS;
+DROP TABLE Maintenance_Technician CASCADE CONSTRAINTS;
+DROP TABLE Safety_Standard CASCADE CONSTRAINTS;

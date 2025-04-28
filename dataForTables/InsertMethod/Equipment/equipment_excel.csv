@@ -1,0 +1,101 @@
+Equipment_ID,Equipment_Name,Equipment_Type,Safety_Status,Installation_Date,Standard_ID
+3001,Gym_Equipment_1,Bench Press,Approved,2024-11-02,7399
+3002,Gym_Equipment_2,Elliptical Trainer,Under Review,2025-01-20,5207
+3003,Gym_Equipment_3,Leg Press,Faulty,2024-12-15,8574
+3004,Gym_Equipment_4,Bench Press,Under Review,2025-01-23,7699
+3005,Gym_Equipment_5,Leg Press,Faulty,2024-05-23,5379
+3006,Gym_Equipment_6,Rowing Machine,Under Review,2024-07-23,2891
+3007,Gym_Equipment_7,Exercise Bike,Approved,2025-02-12,7913
+3008,Gym_Equipment_8,Leg Press,Approved,2024-11-03,5834
+3009,Gym_Equipment_9,Leg Press,Faulty,2024-11-28,5505
+3010,Gym_Equipment_10,Leg Press,Approved,2025-01-12,2346
+3011,Gym_Equipment_11,Bench Press,Approved,2024-07-21,1782
+3012,Gym_Equipment_12,Rowing Machine,Approved,2024-07-20,3441
+3013,Gym_Equipment_13,Exercise Bike,Faulty,2024-07-03,9999
+3014,Gym_Equipment_14,Elliptical Trainer,Approved,2025-03-24,2319
+3015,Gym_Equipment_15,Exercise Bike,Approved,2025-02-07,8196
+3016,Gym_Equipment_16,Elliptical Trainer,Faulty,2025-01-10,1106
+3017,Gym_Equipment_17,Bench Press,Faulty,2024-04-27,3209
+3018,Gym_Equipment_18,Bench Press,Approved,2024-04-30,3066
+3019,Gym_Equipment_19,Exercise Bike,Approved,2024-12-06,6350
+3020,Gym_Equipment_20,Exercise Bike,Approved,2024-05-23,1872
+3021,Gym_Equipment_21,Treadmill,Faulty,2024-05-26,5951
+3022,Gym_Equipment_22,Bench Press,Approved,2024-10-28,8857
+3023,Gym_Equipment_23,Treadmill,Approved,2025-02-08,3203
+3024,Gym_Equipment_24,Bench Press,Approved,2024-07-19,6781
+3025,Gym_Equipment_25,Rowing Machine,Approved,2025-01-23,1277
+3026,Gym_Equipment_26,Treadmill,Approved,2024-11-18,4320
+3027,Gym_Equipment_27,Rowing Machine,Approved,2025-01-17,4990
+3028,Gym_Equipment_28,Elliptical Trainer,Faulty,2024-10-06,8504
+3029,Gym_Equipment_29,Bench Press,Under Review,2025-02-23,3370
+3030,Gym_Equipment_30,Exercise Bike,Under Review,2024-12-16,2439
+3031,Gym_Equipment_31,Bench Press,Faulty,2025-03-13,2895
+3032,Gym_Equipment_32,Bench Press,Under Review,2025-04-04,3726
+3033,Gym_Equipment_33,Leg Press,Approved,2024-12-21,9956
+3034,Gym_Equipment_34,Treadmill,Under Review,2024-07-06,9628
+3035,Gym_Equipment_35,Treadmill,Approved,2024-07-26,7864
+3036,Gym_Equipment_36,Exercise Bike,Approved,2025-02-17,3958
+3037,Gym_Equipment_37,Leg Press,Under Review,2024-10-30,6657
+3038,Gym_Equipment_38,Exercise Bike,Faulty,2024-12-20,7319
+3039,Gym_Equipment_39,Treadmill,Under Review,2025-01-28,3683
+3040,Gym_Equipment_40,Rowing Machine,Under Review,2025-02-05,1978
+3041,Gym_Equipment_41,Treadmill,Approved,2024-12-15,3231
+3042,Gym_Equipment_42,Bench Press,Under Review,2024-06-10,2045
+3043,Gym_Equipment_43,Rowing Machine,Faulty,2025-02-23,2252
+3044,Gym_Equipment_44,Bench Press,Under Review,2025-01-31,6376
+3045,Gym_Equipment_45,Exercise Bike,Approved,2024-10-05,1573
+3046,Gym_Equipment_46,Exercise Bike,Faulty,2024-12-08,1207
+3047,Gym_Equipment_47,Exercise Bike,Under Review,2024-05-29,9184
+3048,Gym_Equipment_48,Exercise Bike,Approved,2024-05-12,3786
+3049,Gym_Equipment_49,Bench Press,Faulty,2024-04-10,1809
+3050,Gym_Equipment_50,Treadmill,Faulty,2024-11-17,4517
+3051,Gym_Equipment_51,Rowing Machine,Under Review,2024-11-14,9803
+3052,Gym_Equipment_52,Rowing Machine,Faulty,2024-05-19,1421
+3053,Gym_Equipment_53,Bench Press,Faulty,2024-07-03,3355
+3054,Gym_Equipment_54,Bench Press,Faulty,2025-01-01,8325
+3055,Gym_Equipment_55,Exercise Bike,Approved,2025-04-02,3705
+3056,Gym_Equipment_56,Exercise Bike,Under Review,2024-04-26,3155
+3057,Gym_Equipment_57,Treadmill,Faulty,2024-09-30,8653
+3058,Gym_Equipment_58,Rowing Machine,Under Review,2024-05-03,9552
+3059,Gym_Equipment_59,Bench Press,Approved,2024-09-10,7252
+3060,Gym_Equipment_60,Elliptical Trainer,Approved,2025-03-03,9581
+3061,Gym_Equipment_61,Leg Press,Faulty,2025-01-29,5645
+3062,Gym_Equipment_62,Treadmill,Approved,2024-10-16,8906
+3063,Gym_Equipment_63,Bench Press,Approved,2024-06-21,6042
+3064,Gym_Equipment_64,Rowing Machine,Approved,2024-05-05,6057
+3065,Gym_Equipment_65,Treadmill,Faulty,2025-02-20,1403
+3066,Gym_Equipment_66,Exercise Bike,Approved,2025-02-02,2890
+3067,Gym_Equipment_67,Rowing Machine,Approved,2024-04-13,8735
+3068,Gym_Equipment_68,Bench Press,Approved,2025-03-06,2003
+3069,Gym_Equipment_69,Bench Press,Faulty,2024-04-17,5748
+3070,Gym_Equipment_70,Leg Press,Approved,2024-11-28,5716
+3071,Gym_Equipment_71,Bench Press,Approved,2025-02-21,8174
+3072,Gym_Equipment_72,Bench Press,Under Review,2024-11-10,2564
+3073,Gym_Equipment_73,Exercise Bike,Approved,2024-05-29,7146
+3074,Gym_Equipment_74,Elliptical Trainer,Approved,2024-11-13,6145
+3075,Gym_Equipment_75,Treadmill,Approved,2024-04-18,1235
+3076,Gym_Equipment_76,Leg Press,Under Review,2025-02-02,5488
+3077,Gym_Equipment_77,Leg Press,Approved,2024-08-11,5751
+3078,Gym_Equipment_78,Exercise Bike,Under Review,2025-02-23,6216
+3079,Gym_Equipment_79,Leg Press,Faulty,2024-04-15,4904
+3080,Gym_Equipment_80,Bench Press,Under Review,2025-04-04,9816
+3081,Gym_Equipment_81,Rowing Machine,Faulty,2024-12-13,7007
+3082,Gym_Equipment_82,Exercise Bike,Faulty,2025-01-04,3719
+3083,Gym_Equipment_83,Treadmill,Under Review,2025-04-04,6942
+3084,Gym_Equipment_84,Treadmill,Faulty,2024-12-11,6935
+3085,Gym_Equipment_85,Elliptical Trainer,Approved,2025-03-13,9221
+3086,Gym_Equipment_86,Rowing Machine,Faulty,2025-01-27,6362
+3087,Gym_Equipment_87,Leg Press,Under Review,2024-11-05,7194
+3088,Gym_Equipment_88,Treadmill,Under Review,2025-02-16,3780
+3089,Gym_Equipment_89,Treadmill,Under Review,2024-05-26,7624
+3090,Gym_Equipment_90,Rowing Machine,Under Review,2025-02-09,8905
+3091,Gym_Equipment_91,Treadmill,Approved,2024-08-11,6821
+3092,Gym_Equipment_92,Rowing Machine,Approved,2024-04-14,7321
+3093,Gym_Equipment_93,Elliptical Trainer,Approved,2025-02-20,9687
+3094,Gym_Equipment_94,Bench Press,Under Review,2024-09-26,9028
+3095,Gym_Equipment_95,Treadmill,Under Review,2024-09-09,7049
+3096,Gym_Equipment_96,Exercise Bike,Faulty,2024-04-19,9073
+3097,Gym_Equipment_97,Treadmill,Under Review,2024-10-03,9189
+3098,Gym_Equipment_98,Bench Press,Faulty,2024-04-27,2377
+3099,Gym_Equipment_99,Treadmill,Approved,2024-12-24,7779
+3100,Gym_Equipment_100,Elliptical Trainer,Faulty,2024-09-30,9593
