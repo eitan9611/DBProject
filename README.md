@@ -3,7 +3,7 @@
 ## Submitted by:
 
 * **Eliya Masa**
-* **Eitan Weitzman**
+* **Eitan Weizman**
 
 ## System Name:
 
