@@ -52,7 +52,8 @@ These entities are linked through foreign key relationships and enforce data int
 
 ## 3. Entity-Relationship Diagram (ERD)
 
-📌 *TODO: Insert ERD Diagram Screenshot Here*
+![image](https://github.com/user-attachments/assets/036bd48b-8e6a-4142-b049-fdb574db023b)
+
 
 Key relationships:
 
