@@ -67,7 +67,7 @@ Key relationships:
 
 ## 4. Data Structure Diagram (DSD)
 
-📌 *TODO: Insert DSD Diagram Screenshot Here*
+![image](https://github.com/user-attachments/assets/e4a0a963-d383-4008-8306-c17618bff69a)
 
 The DSD illustrates all data types, constraints, primary and foreign keys for each table.
 
