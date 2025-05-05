@@ -99,7 +99,9 @@ We used the following methods to populate the database:
 
 ## 7. Data Backup and Restore
 
-📸 *TODO: Add screenshots below*
+![image](https://github.com/user-attachments/assets/933bb995-0394-48ea-add6-a50bed6e3e22)
+![image](https://github.com/user-attachments/assets/81cec819-1190-49df-a5cb-f9ab3ee625d9)
+
 
 * **Backup Method**: Performed using SQL dump/export feature.
 * **Restore Method**: Reloaded using SQL import and tested integrity post-restore.
