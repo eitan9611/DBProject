@@ -88,6 +88,7 @@ We used the following methods to populate the database:
 
 ![image](https://github.com/user-attachments/assets/e40eba15-4f48-46ef-89be-eba0c596b8bc)
 ![image](https://github.com/user-attachments/assets/dfbf11a5-48d9-4000-a150-b85f4ec073a7)
+![image](https://github.com/user-attachments/assets/21d54342-c176-4954-bc3e-071c55ff2986)
 
 
 * Excel import of pre-filled .xlsx files
