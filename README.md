@@ -86,7 +86,8 @@ The DSD illustrates all data types, constraints, primary and foreign keys for ea
 
 We used the following methods to populate the database:
 
-📸 *TODO: Add screenshots of each method below*
+![image](https://github.com/user-attachments/assets/e40eba15-4f48-46ef-89be-eba0c596b8bc)
+
 
 * Manual data entry via DBMS interface
 * Excel import of pre-filled .xlsx files
