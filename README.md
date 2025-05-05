@@ -89,8 +89,8 @@ We used the following methods to populate the database:
 ![image](https://github.com/user-attachments/assets/e40eba15-4f48-46ef-89be-eba0c596b8bc)
 
 
-* Manual data entry via DBMS interface
 * Excel import of pre-filled .xlsx files
+* Manual data entry via Python code
 * SQL INSERT statements for batch data input
 
 ---
