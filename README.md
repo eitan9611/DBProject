@@ -706,7 +706,8 @@ WHERE Technician_ID NOT IN (
 ```
 
 **Database State Before Delete:**  
-[Insert screenshot of Equipment_Malfunction and Maintenance_Technician tables before deletion here]
+<img width="527" alt="A1" src="https://github.com/user-attachments/assets/2cccb4ae-53c8-4313-8017-da90692ecb78" />
+
 
 **Execution Screenshot:**  
 [Insert screenshot of query execution here]
@@ -730,10 +731,12 @@ AND Equipment_ID NOT IN (
 ```
 
 **Database State Before Delete:**  
-[Insert screenshot of Safety_Check table before deletion here]
+<img width="496" alt="B1" src="https://github.com/user-attachments/assets/affc628d-3a8f-4382-ae64-eb2e2ecd690a" />
+
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+<img width="587" alt="B2" src="https://github.com/user-attachments/assets/935db17e-ba04-49d1-a252-c35b4121165a" />
+
 
 **Database State After Delete:**  
 [Insert screenshot of Safety_Check table after deletion here]
@@ -753,10 +756,12 @@ AND Equipment_ID NOT IN (
 ```
 
 **Database State Before Delete:**  
-[Insert screenshot of Equipment_Usage table before deletion here]
+<img width="512" alt="C1" src="https://github.com/user-attachments/assets/ca3499b5-ee6c-4fe0-b943-5694578f6346" />
+
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+<img width="648" alt="C3" src="https://github.com/user-attachments/assets/f5b6d885-114f-4ede-82f1-9b82016d7809" />
+
 
 **Database State After Delete:**  
 [Insert screenshot of Equipment_Usage table after deletion here]
