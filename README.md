@@ -779,7 +779,8 @@ CHECK (Usage_Duration > 0);
 ```
 
 **Constraint Test:**  
-[Insert screenshot showing an attempt to insert a record with a negative or zero duration value, and the resulting error]
+<img width="506" alt="אילוץ1" src="https://github.com/user-attachments/assets/a1b40c55-3d89-4ae7-b5bd-189099ac2874" />
+
 
 ### Constraint 2: Default Value for Repair Status
 **Description:**  
@@ -792,7 +793,8 @@ SET DEFAULT 'Pending';
 ```
 
 **Constraint Test:**  
-[Insert screenshot showing insertion of a new malfunction record without specifying a repair status, and the resulting record showing the default value]
+<img width="711" alt="אילוץ2" src="https://github.com/user-attachments/assets/e5e3b70d-a52e-4a15-9bd5-fb64f0ba336c" />
+
 
 ### Constraint 3: No Future Installation Dates
 **Description:**  
@@ -805,7 +807,8 @@ CHECK (Installation_Date <= CURRENT_DATE);
 ```
 
 **Constraint Test:**  
-[Insert screenshot showing an attempt to insert a record with a future installation date, and the resulting error]
+<img width="628" alt="אילוץ3" src="https://github.com/user-attachments/assets/a18b8332-dd52-48d8-942b-be5ef01047c6" />
+
 
 ## Transaction Management
 
