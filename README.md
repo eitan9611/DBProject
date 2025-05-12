@@ -209,7 +209,8 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="861" alt="2" src="https://github.com/user-attachments/assets/bea6f7ae-3835-4948-8ed1-b19d1c5aba20" />
+
 
 ### Query 3: Technicians by Equipment Diversity
 **תיאור השאילתה:**  
