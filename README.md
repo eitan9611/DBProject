@@ -627,10 +627,12 @@ WHERE Repair_Status != 'COMPLETED';
 ```
 
 **Database State Before Update:**  
-[Insert screenshot of Equipment_Malfunction table before update here]
+<img width="389" alt="B1" src="https://github.com/user-attachments/assets/94f383a2-e674-499a-915d-afb98262331e" />
+
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+<img width="418" alt="B2" src="https://github.com/user-attachments/assets/2b011a87-32bc-44ed-bffd-eafa2d7b99fc" />
+
 
 **Database State After Update:**  
 [Insert screenshot of Equipment_Malfunction table showing updated malfunction severity values here]
@@ -665,13 +667,16 @@ SET Last_Certification_Date =
 ```
 
 **Database State Before Update:**  
-[Insert screenshot of Maintenance_Technician table before update here]
+<img width="521" alt="C1" src="https://github.com/user-attachments/assets/ca3609cf-5fcb-4628-9cff-046d09f45cc6" />
+
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+<img width="500" alt="C2" src="https://github.com/user-attachments/assets/c37536a9-561d-4b45-ac1c-07b77a288809" />
+
 
 **Database State After Update:**  
-[Insert screenshot of Maintenance_Technician table showing updated certification dates here]
+<img width="533" alt="C3" src="https://github.com/user-attachments/assets/4cad0838-23ab-4b4e-9ff2-47026fe7c26c" />
+
 
 ## DELETE Queries
 
