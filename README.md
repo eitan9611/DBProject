@@ -434,7 +434,8 @@ LIMIT 30;
 ```
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+![WhatsApp Image 2025-05-05 at 21 57 00](https://github.com/user-attachments/assets/90a867b2-cc24-4fa9-8884-f0551d92315c)
+
 
 **Results Screenshot:**  
 [Insert screenshot showing up to 5 rows of results here]
