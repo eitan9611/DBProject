@@ -172,7 +172,7 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="1002" alt="1" src="https://github.com/user-attachments/assets/a57c0590-85e0-4670-bee0-4e6640616ed0" />
 
 ### Query 2: Technicians Who Handled Most Critical Malfunctions
 **תיאור השאילתה:**  
