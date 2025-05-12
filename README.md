@@ -137,8 +137,8 @@ The Gym Equipment Safety Management System continues to track equipment usage, m
 ## SELECT Queries
 
 ### Query 1: Equipment Without Recent Safety Checks
-**Description:**  
-This query displays all equipment that hasn't undergone a safety check in the last six months, including details about the last inspection performed and the safety standard it should meet.
+**תיאור השאילתה:**  
+שאילתה זו מציגה את כל הציוד שלא עבר בדיקת בטיחות בששת החודשים האחרונים, כולל פרטים על הבדיקה האחרונה שבוצעה ותקן הבטיחות בו עליו לעמוד.
 
 ```sql
 SELECT 
@@ -175,8 +175,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 2: Technicians Who Handled Most Critical Malfunctions
-**Description:**  
-This query shows technicians who have dealt with the highest number of severe malfunctions in the last year, including a breakdown of malfunctions by month and their certification status.
+**תיאור השאילתה:**  
+שאילתה זו מציגה טכנאים שטיפלו במספר התקלות החמורות הגבוה ביותר בשנה האחרונה, כולל פירוט התקלות לפי חודש ומצב ההסמכה שלהם.
 
 ```sql
 SELECT 
@@ -212,8 +212,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 3: Technicians by Equipment Diversity
-**Description:**  
-This query ranks technicians by the diversity of equipment types they've worked on, showing how many different types of equipment, individual units, and completed repairs they've handled.
+**תיאור השאילתה:**  
+שאילתה זו מדרגת טכנאים לפי מגוון סוגי הציוד עליהם עבדו, ומציגה כמה סוגים שונים של ציוד, יחידות בודדות ותיקונים שהושלמו הם טיפלו בהם.
 
 ```sql
 SELECT 
@@ -243,8 +243,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 4: Equipment Safety Standards Compliance
-**Description:**  
-This query analyzes how well different types of equipment comply with their assigned safety standards, calculating the pass rate percentage for safety checks and showing installation data.
+**תיאור השאילתה:**  
+שאילתה זו מנתחת את מידת עמידתם של סוגים שונים של ציוד בתקני הבטיחות שהוקצו להם, מחשבת את אחוז שיעור המעבר של בדיקות בטיחות ומציגה נתוני התקנה.
 
 ```sql
 SELECT 
@@ -281,8 +281,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 5: Monthly Safety Status Report by Equipment Type
-**Description:**  
-This query generates a monthly safety report showing malfunctions by equipment type and severity level, including repair statistics and technician involvement over the past year.
+**תיאור השאילתה:**  
+שאילתה זו מייצרת דוח בטיחות חודשי המציג תקלות לפי סוג הציוד ורמת החומרה, כולל סטטיסטיקות תיקונים ומעורבות טכנאים במהלך השנה האחרונה.
 
 ```sql
 SELECT 
@@ -332,8 +332,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 6: High-Risk Equipment Identification
-**Description:**  
-This query identifies equipment at high risk for failure based on three risk factors: technicians with expired certifications, missing recent safety checks, and malfunction history. It calculates a weighted risk score for each piece of equipment.
+**תיאור השאילתה:**  
+שאילתה זו מזהה ציוד בסיכון גבוה לכשל על סמך שלושה גורמי סיכון: טכנאים עם הסמכות שפג תוקפן, חסרי בדיקות בטיחות אחרונות והיסטוריית תקלות. היא מחשבת ציון סיכון משוקלל עבור כל פריט ציוד.
 
 ```sql
 WITH Equipment_Safety_History AS (
@@ -443,9 +443,8 @@ LIMIT 30;
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 7: Correlation Between Usage Frequency and Malfunctions
-**Description:**  
-This query analyzes the relationship between equipment usage frequency and malfunction incidents in the past month, calculating malfunctions per hour of usage to identify potentially problematic equipment.
-
+**תיאור השאילתה:**  
+שאילתה זו מנתחת את הקשר בין תדירות השימוש בציוד לבין תקלות בחודש האחרון, ומחשבת תקלות לשעת שימוש כדי לזהות ציוד שעלול להיות בעייתי.
 ```sql
 SELECT 
     usage_data.Equipment_ID,
@@ -500,9 +499,8 @@ ORDER BY
 [Insert screenshot showing up to 5 rows of results here]
 
 ### Query 8: Seasonal Malfunction Trends by Month and Equipment Type
-**Description:**  
-This query identifies seasonal patterns in equipment malfunctions over the past year, breaking down incidents by season, month, and equipment type to help predict and prevent future problems.
-
+**תיאור השאילתה:**  
+שאילתה זו מזהה דפוסים עונתיים בתקלות בציוד במהלך השנה האחרונה, תוך פילוח אירועים לפי עונה, חודש וסוג ציוד כדי לסייע בחיזוי ובמניעת בעיות עתידיות.
 ```sql
 SELECT 
     EXTRACT(YEAR FROM em.Report_Date) AS Report_Year,
@@ -548,9 +546,8 @@ ORDER BY
 ## UPDATE Queries
 
 ### Update Query 1: Equipment Safety Status Update
-**Description:**  
-This query updates the Safety_Status field in the Equipment table based on the most recent safety check result. It sets status to 'UNSAFE' if the last check was failed, 'SAFE' if the last check was passed and was done within the last 3 months, and 'REQUIRES_INSPECTION' in all other cases.
-
+**תיאור השאילתה:**  
+שאילתה זו מעדכנת את השדה Safety_Status בטבלת הציוד בהתבסס על תוצאת בדיקת הבטיחות האחרונה. היא מגדירה את הסטטוס ל-'UNSAFE' אם הבדיקה האחרונה נכשלה, ל-'SAFE' אם הבדיקה האחרונה עברה ובוצעה בשלושת החודשים האחרונים, ול-'REQUIRES_INSPECTION' בכל שאר המקרים.
 ```sql
 UPDATE Equipment
 SET Safety_Status = 
@@ -594,9 +591,8 @@ SET Safety_Status =
 [Insert screenshot of equipment table showing updated safety status values here]
 
 ### Update Query 2: Malfunction Severity Update Based on Average Usage Duration
-**Description:**  
-This query updates the severity level of equipment malfunctions based on the average usage duration of equipment. It assigns 'HIGH' severity to equipment with average usage over 3 hours, 'MEDIUM' for 1-3 hours, and 'LOW' for less than 1 hour. It only affects malfunctions that haven't been repaired yet.
-
+**תיאור השאילתה:**  
+שאילתה זו מעדכנת את רמת החומרה של תקלות בציוד בהתבסס על משך השימוש הממוצע בציוד. היא מקצה חומרה 'גבוהה' לציוד עם שימוש ממוצע של מעל 3 שעות, 'בינונית' ל-1-3 שעות ו-'נמוכה' לפחות משעה. היא משפיעה רק על תקלות שטרם תוקנו.
 ```sql
 UPDATE Equipment_Malfunction
 SET Malfunction_Severity = 
@@ -630,9 +626,8 @@ WHERE Repair_Status != 'COMPLETED';
 [Insert screenshot of Equipment_Malfunction table showing updated malfunction severity values here]
 
 ### Update Query 3: Technician Certification Date Update
-**Description:**  
-This query updates technicians' certification dates based on their successful repair records over the past year. Technicians with more than 10 successful repairs get a certification date set to today, those with 5-10 repairs get a 6-month extension, and those with fewer than 5 repairs keep their current certification date.
-
+**תיאור השאילתה:**  
+שאילתה זו מעדכנת את תאריכי ההסמכה של טכנאים בהתבסס על רישומי התיקונים המוצלחים שלהם במהלך השנה האחרונה. טכנאים עם יותר מ-10 תיקונים מוצלחים מקבלים תאריך הסמכה שנקבע להיום, טכנאים עם 5-10 תיקונים מקבלים הארכה של 6 חודשים, ואלה עם פחות מ-5 תיקונים שומרים על תאריך ההסמכה הנוכחי שלהם.
 ```sql
 UPDATE Maintenance_Technician
 SET Last_Certification_Date = 
@@ -671,9 +666,8 @@ SET Last_Certification_Date =
 ## DELETE Queries
 
 ### Delete Query 1: Remove Inactive Technicians
-**Description:**  
-This query identifies and removes technicians who haven't completed any successful repairs in the past year. It's a two-step process that first removes dependent malfunction records to preserve referential integrity, then removes the inactive technicians themselves.
-
+**תיאור השאילתה:**  
+שאילתה זו מזהה ומסירה טכנאים שלא השלימו תיקונים מוצלחים בשנה האחרונה. זהו תהליך דו-שלבי אשר תחילה מסיר רשומות תקלות תלויות כדי לשמר שלמות הקשרים, ולאחר מכן מסיר את הטכנאים הלא פעילים עצמם.
 ```sql
 -- Step 1: Delete malfunction records related to inactive technicians
 DELETE FROM Equipment_Malfunction
@@ -706,9 +700,8 @@ WHERE Technician_ID NOT IN (
 [Insert screenshot of Equipment_Malfunction and Maintenance_Technician tables after deletion here]
 
 ### Delete Query 2: Remove Old Safety Checks for Unused Equipment
-**Description:**  
-This query removes safety check records that are over 2 years old, but only for equipment that hasn't been used in the past year. This helps clean the database while preserving historically relevant data.
-
+**תיאור השאילתה:**  
+שאילתה זו מסירה רשומות בדיקות בטיחות בנות למעלה משנתיים, אך רק עבור ציוד שלא היה בשימוש בשנה האחרונה. זה עוזר לנקות את מסד הנתונים תוך שמירה על נתונים רלוונטיים מבחינה היסטורית.
 ```sql
 DELETE FROM Safety_Check
 WHERE Inspection_Date < (CURRENT_DATE - INTERVAL '2 years')
@@ -731,9 +724,8 @@ AND Equipment_ID NOT IN (
 [Insert screenshot of Safety_Check table after deletion here]
 
 ### Delete Query 3: Remove Short Equipment Usage Records
-**Description:**  
-This query removes equipment usage records that were shorter than 15 minutes, older than 3 months, and not associated with any equipment malfunction reported on the same day.
-
+**תיאור השאילתה:**  
+שאילתה זו מסירה רשומות שימוש בציוד שהיו קצרות מ-15 דקות, ישנות יותר מ-3 חודשים ולא קשורות לתקלה בציוד שדווחה באותו יום.
 ```sql
 DELETE FROM Equipment_Usage
 WHERE Usage_Duration < 15
