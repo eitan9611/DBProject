@@ -589,13 +589,16 @@ SET Safety_Status =
 ```
 
 **Database State Before Update:**  
-[Insert screenshot of equipment table before update here]
+<img width="311" alt="1A" src="https://github.com/user-attachments/assets/20b03644-f2f8-413a-866c-49b247bb1a35" />
+
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+<img width="644" alt="1B" src="https://github.com/user-attachments/assets/13eea441-4d76-4e3b-9bf2-5c7eb2d64b06" />
+
 
 **Database State After Update:**  
-[Insert screenshot of equipment table showing updated safety status values here]
+<img width="232" alt="1C" src="https://github.com/user-attachments/assets/96e11b38-f73f-419f-8b14-ca5700c893bb" />
+
 
 ### Update Query 2: Malfunction Severity Update Based on Average Usage Duration
 **תיאור השאילתה:**  
