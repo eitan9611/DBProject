@@ -241,7 +241,8 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="499" alt="3" src="https://github.com/user-attachments/assets/4f60db68-26b7-405d-b8d9-3777947547f0" />
+
 
 ### Query 4: Equipment Safety Standards Compliance
 **תיאור השאילתה:**  
@@ -279,7 +280,8 @@ ORDER BY
 ![WhatsApp Image 2025-05-05 at 21 56 58](https://github.com/user-attachments/assets/8414b278-df75-4975-ac8b-efbfa2a0366d)
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="746" alt="4" src="https://github.com/user-attachments/assets/3bd84ba7-cd4d-4c9b-90b1-d8abcca9b97a" />
+
 
 ### Query 5: Monthly Safety Status Report by Equipment Type
 **תיאור השאילתה:**  
@@ -330,7 +332,8 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="669" alt="5" src="https://github.com/user-attachments/assets/d12f0e10-511c-4321-81b1-d57cfd9d02f8" />
+
 
 ### Query 6: High-Risk Equipment Identification
 **תיאור השאילתה:**  
@@ -441,7 +444,8 @@ LIMIT 30;
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="941" alt="6" src="https://github.com/user-attachments/assets/176a887d-2b42-4136-8f89-08a9061eb015" />
+
 
 ### Query 7: Correlation Between Usage Frequency and Malfunctions
 **תיאור השאילתה:**  
@@ -497,7 +501,8 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="860" alt="7" src="https://github.com/user-attachments/assets/0d0c68d8-6a85-4b62-888b-dbebea1dcba9" />
+
 
 ### Query 8: Seasonal Malfunction Trends by Month and Equipment Type
 **תיאור השאילתה:**  
@@ -542,7 +547,8 @@ ORDER BY
 
 
 **Results Screenshot:**  
-[Insert screenshot showing up to 5 rows of results here]
+<img width="764" alt="8" src="https://github.com/user-attachments/assets/3540911d-794f-47bf-a642-4ee6f381c149" />
+
 
 ## UPDATE Queries
 
