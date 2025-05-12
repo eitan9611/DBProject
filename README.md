@@ -204,7 +204,8 @@ ORDER BY
 ```
 
 **Execution Screenshot:**  
-[Insert screenshot of query execution here]
+![WhatsApp Image 2025-05-05 at 21 56 59 (2)](https://github.com/user-attachments/assets/e88c2997-6ad1-45a9-966b-5ad6b4c42c56)
+
 
 **Results Screenshot:**  
 [Insert screenshot showing up to 5 rows of results here]
