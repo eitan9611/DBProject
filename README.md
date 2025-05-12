@@ -829,10 +829,11 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 ```
 
 **Transaction Stages:**  
-[Insert screenshots showing:
-1. Database state before transaction starts
-2. After the UPDATE but before COMMIT
-3. After the COMMIT operation]
+<img width="555" alt="B1" src="https://github.com/user-attachments/assets/5cfa22c4-7aef-4bb5-8c58-f09ad3c55273" />
+<img width="390" alt="B2" src="https://github.com/user-attachments/assets/911eaaed-8641-45c4-9d80-a42f94a9c7eb" />
+<img width="219" alt="B3" src="https://github.com/user-attachments/assets/c3194885-5523-4c30-b82b-2fd06562f4c5" />
+<img width="563" alt="B4" src="https://github.com/user-attachments/assets/75522ffb-2f1f-40c2-94ba-c4a79abe962f" />
+
 
 ### Example 2: ROLLBACK Operation
 **Description:**  
@@ -851,7 +852,8 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 ```
 
 **Transaction Stages:**  
-[Insert screenshots showing:
-1. Database state before transaction starts
-2. After the UPDATE but before ROLLBACK
-3. After the ROLLBACK operation, showing original data is preserved]
+<img width="555" alt="A1" src="https://github.com/user-attachments/assets/5f82f24d-824e-448d-b1c6-ef16180971a7" />
+<img width="390" alt="A2" src="https://github.com/user-attachments/assets/0276ce5b-73e2-4a2a-b01e-495b31b34e9f" />
+<img width="260" alt="A3" src="https://github.com/user-attachments/assets/c63ee4e0-4088-4c7b-a9f0-f567b26faef8" />
+<img width="661" alt="A4" src="https://github.com/user-attachments/assets/db5aacca-64bd-4103-a97d-17d087a751e7" />
+
