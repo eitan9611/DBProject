@@ -856,7 +856,7 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 
 
 
-🧩 Integration Phase – README (Stage C)
+ **Integration Phase – README (Stage C)**
 1. DSD & ERD Diagrams (in correct order)
 🔹 1. DSD of the Received Department
 <img width="275" alt="DSD_new" src="https://github.com/user-attachments/assets/48b53d97-5e8a-4e00-aa75-45004bfb9f51" />
@@ -874,56 +874,210 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 <img width="368" alt="DSD_together" src="https://github.com/user-attachments/assets/63efe6c6-1be7-4a7c-8143-a376670af467" />
 
 
-2. Integration Decisions
-During the integration process, several key decisions were made to ensure a smooth and logical merger between the two systems:
+2.We were tasked with integrating our database with Noam’s database.
+In our initial analysis of the combined ERD diagrams, we identified two key aspects that required attention:
 
-Table Naming Conflicts: When tables from both departments had similar purposes or names, we chose unified, descriptive names to maintain consistency.
+Harmonizing the Equipment tables from both databases to create a unified structure.
 
-Foreign Key Adjustments: We added and modified foreign keys to reflect the new relationships between the integrated data.
+Creating a shared Employee table from which both Noam’s Trainer table and our Maintenance_Technician table would inherit, as both represent types of employees. This integration was based on common conceptual attributes.
 
-Normalization & Redundancy: Ensured normalized structure while avoiding data duplication across the merged ERD.
+3.Integration Process Between Our Database and Noam’s
+Step 1: Aligning the Equipment Tables
+At first glance, the only table shared between both databases is the Equipment table. However, its structure differs between our system and Noam’s:
 
-Date Formats & Types: Aligned data types and formats for fields like dates, notes, and text fields to ensure compatibility.
+Our Equipment Table:
 
-3. Description of the Process and Commands Used
-The process included these steps:
+sql
+Copy code
+equipment_id, equipment_name, equipment_type, safety_status, installation_date, standard_id
+Noam’s Equipment Table:
 
-Restore Received Schema: Loaded the backup file of the received system into pgAdmin.
+sql
+Copy code
+equipmentid, eqname, purchasedate, conditionstatus, exerciseid
+To perform a proper integration, we first needed to:
 
-Draw DSD: Manually documented the received system’s structure into a DSD diagram.
+Standardize column names to a common naming convention.
 
-Reverse ERD: Built a reverse-engineered ERD from the DSD.
+Resolve data type mismatches where present.
 
-Integrate with Our System: Merged our ERD with the received one into a new joint ERD.
+Add any missing columns that were present in Noam’s schema but not in ours.
 
-Update the Schema: Used SQL commands such as ALTER TABLE, ADD COLUMN, and ADD FOREIGN KEY to apply integration changes directly.
+We finalized the schema as follows and then imported the data using dblink:
 
-Verify Data Integrity: Ensured data was preserved in both schemas and all relationships work as expected.
+sql
+Copy code
+CREATE EXTENSION IF NOT EXISTS dblink;
+
+INSERT INTO equipment (equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid)
+SELECT equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid
+FROM dblink(
+  'dbname=NOAM user=eitan password=weizman558',
+  'SELECT equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid FROM equipment'
+) AS source(
+  equipment_id INT,
+  equipment_name VARCHAR(50),
+  purchasedate DATE,
+  conditionstatus VARCHAR(30),
+  exerciseid INT
+)
+ON CONFLICT (equipment_id) DO NOTHING;
+Step 2: Importing Noam’s Remaining Tables
+Since the rest of Noam’s tables are independent and don't conflict with ours, we simply created their schema on our side and imported the data:
+
+Table Creation:
+
+sql
+Copy code
+CREATE TABLE trainee (
+    traineeid serial PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    email VARCHAR(50),
+    phone VARCHAR(15),
+    dateofbirth DATE
+);
+
+CREATE TABLE trainer (
+    trainerid INTEGER PRIMARY KEY,
+    programid INTEGER,
+    hiredate DATE,
+    employeeid INTEGER
+);
+
+CREATE TABLE trainingprogram (
+    programid serial PRIMARY KEY,
+    programname VARCHAR(50),
+    startdate DATE,
+    enddate DATE,
+    traineeid INTEGER
+);
+
+CREATE TABLE traininglog (
+    logid serial PRIMARY KEY,
+    traineeid INTEGER,
+    programid INTEGER,
+    duration INTEGER,
+    repetitions INTEGER,
+    programname VARCHAR(50)
+);
+
+CREATE TABLE exercise (
+    exerciseid serial PRIMARY KEY,
+    exname VARCHAR(50),
+    description VARCHAR(255),
+    programid INTEGER
+);
+Data Insertion via dblink:
+
+sql
+Copy code
+-- trainee
+INSERT INTO trainee (traineeid, firstname, lastname, email, phone, dateofbirth)
+SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
+                     'SELECT traineeid, firstname, lastname, email, phone, dateofbirth FROM trainee')
+AS t(traineeid INTEGER, firstname VARCHAR(50), lastname VARCHAR(50), email VARCHAR(50), phone VARCHAR(15), dateofbirth DATE);
+
+-- trainer
+INSERT INTO trainer (trainerid, programid, hiredate, employeeid)
+SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
+                     'SELECT trainerid, programid, hiredate, employeeid FROM trainer')
+AS t(trainerid INTEGER, programid INTEGER, hiredate DATE, employeeid INTEGER);
+
+-- trainingprogram
+INSERT INTO trainingprogram (programid, programname, startdate, enddate, traineeid)
+SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
+                     'SELECT programid, programname, startdate, enddate, traineeid FROM trainingprogram')
+AS t(programid INTEGER, programname VARCHAR(50), startdate DATE, enddate DATE, traineeid INTEGER);
+
+-- traininglog
+INSERT INTO traininglog (logid, traineeid, programid, duration, repetitions, programname)
+SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
+                     'SELECT logid, traineeid, programid, duration, repetitions, programname FROM traininglog')
+AS t(logid INTEGER, traineeid INTEGER, programid INTEGER, duration INTEGER, repetitions INTEGER, programname VARCHAR(50));
+
+-- exercise
+INSERT INTO exercise (exerciseid, exname, description, programid)
+SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
+                     'SELECT exerciseid, exname, description, programid FROM exercise')
+AS t(exerciseid INTEGER, exname VARCHAR(50), description VARCHAR(255), programid INTEGER);
+Step 3: Creating a Shared Employee Table
+To unify both our maintenance_technician table and Noam’s trainer table under a common Employee entity, we needed to create a parent table they could both reference. However, we discovered that the two tables shared no common columns.
+
+To solve this, we manually added a shared column — phone_number — by preparing a CSV with phone numbers and uploading it to Noam’s database.
+
+Then, we created the unified Employee table:
+
+sql
+Copy code
+CREATE TABLE employee (
+    employeeid SERIAL PRIMARY KEY,
+    phone_number VARCHAR(30) UNIQUE NOT NULL
+);
+We added a new employeeid foreign key column to both child tables:
+
+sql
+Copy code
+ALTER TABLE trainer ADD COLUMN employeeid INTEGER UNIQUE;
+ALTER TABLE maintenance_technician ADD COLUMN employeeid INTEGER UNIQUE;
+Next, we extracted phone numbers from both tables and inserted them into employee:
+
+sql
+Copy code
+INSERT INTO employee (phone_number)
+SELECT DISTINCT phone_number FROM (
+    SELECT phone_number FROM trainer
+    UNION
+    SELECT phone_number FROM maintenance_technician
+) AS unique_phones;
+We then updated both tables to link to the correct employeeid from the new employee table:
+
+sql
+Copy code
+UPDATE trainer T
+SET employeeid = E.employeeid
+FROM employee E
+WHERE T.phone_number = E.phone_number;
+
+UPDATE maintenance_technician M
+SET employeeid = E.employeeid
+FROM employee E
+WHERE M.phone_number = E.phone_number;
+Finally, we enforced referential integrity by adding foreign key constraints:
+
+sql
+Copy code
+ALTER TABLE trainer
+ADD CONSTRAINT fk_trainer_employee
+FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
+
+ALTER TABLE maintenance_technician
+ADD CONSTRAINT fk_maintenance_employee
+FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
+
 
 4. Views and Queries
 📌 View 1: Training_Log_Summary
 Description:
-This view joins training logs with training programs, showing each trainee’s sessions, duration, and repetitions.
+This SQL command creates a view named `Equipment_Safety_Status_View` that combines data from the `Equipment` and `Safety_Check` tables. It uses a **LEFT JOIN** to show all equipment items, along with their safety status and any related safety check details (inspection date, result, and notes). If no safety check exists for an item, those fields will be `NULL`. This view helps monitor equipment safety in one unified query.
 
-View Code:
-sql
-Copy code
-CREATE OR REPLACE VIEW Training_Log_Summary AS
+
+CREATE VIEW Equipment_Safety_Status_View AS
 SELECT 
-    tl.logid,
-    tl.traineeid,
-    tp.programname AS program_name,
-    tl.duration,
-    tl.repetitions
+    E.Equipment_ID,
+    E.Equipment_Name,
+    E.Installation_Date,
+    E.Safety_Status,
+    SC.Inspection_Date,
+    SC.Result,
+    SC.Inspector_Notes
 FROM 
-    traininglog tl
-JOIN 
-    trainingprogram tp ON tl.programid = tp.programid;
-Sample Output (10 Rows):
-sql
-Copy code
-SELECT * FROM Training_Log_Summary LIMIT 10;
-(תמונת מסך של הפלט – 10 שורות ראשונות של Training_Log_Summary)
+    Equipment E
+LEFT JOIN 
+    Safety_Check SC ON E.Equipment_ID = SC.Equipment_ID;
+
+<img width="893" alt="SelectA" src="https://github.com/user-attachments/assets/12779283-d3c5-473e-92e9-4d59352598d2" />
+
 
 Query 1 – All Sessions of a Specific Trainee
 Description: Retrieves all training records of trainee with ID 101.
@@ -933,7 +1087,8 @@ Copy code
 SELECT *
 FROM Training_Log_Summary
 WHERE traineeid = 101;
-(תמונת מסך של פלט השאילתה)
+<img width="783" alt="View1A" src="https://github.com/user-attachments/assets/a8c4a5f0-cfbb-4e39-9079-b523317ec856" />
+
 
 Query 2 – Average Duration by Program
 Description: Calculates the average duration of each training program.
@@ -943,7 +1098,8 @@ Copy code
 SELECT program_name, AVG(duration) AS average_duration
 FROM Training_Log_Summary
 GROUP BY program_name;
-(תמונת מסך של פלט השאילתה)
+<img width="483" alt="View1B" src="https://github.com/user-attachments/assets/d472b9bb-4112-426c-939d-b628fb2a324c" />
+
 
 📌 View 2: Equipment_Safety_Status_View
 Description:
@@ -969,7 +1125,8 @@ Sample Output (10 Rows):
 sql
 Copy code
 SELECT * FROM Equipment_Safety_Status_View LIMIT 10;
-(תמונת מסך של הפלט – 10 שורות ראשונות של Equipment_Safety_Status_View)
+<img width="422" alt="SelectB" src="https://github.com/user-attachments/assets/9f7e1d65-015a-403b-8363-f2e080624faa" />
+
 
 Query 1 – Equipment That Failed Last Check
 Description: Lists all equipment where the safety check result is 'Fail'.
@@ -979,7 +1136,8 @@ Copy code
 SELECT *
 FROM Equipment_Safety_Status_View
 WHERE result = 'Fail';
-(תמונת מסך של פלט השאילתה)
+<img width="275" alt="View2A" src="https://github.com/user-attachments/assets/b64a5386-cc36-4636-a40e-3d0901efaac1" />
+
 
 Query 2 – Equipment Without Inspections
 Description: Lists equipment that has never undergone a safety inspection.
@@ -989,4 +1147,5 @@ Copy code
 SELECT *
 FROM Equipment_Safety_Status_View
 WHERE inspectiondate IS NULL;
-(תמונת מסך של פלט השאילתה)
+<img width="369" alt="View2B" src="https://github.com/user-attachments/assets/cc77dbed-9d34-4a80-b5ed-fbe57c5946a2" />
+
