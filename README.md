@@ -708,10 +708,6 @@ WHERE Technician_ID NOT IN (
 **Database State Before Delete:**  
 <img width="527" alt="A1" src="https://github.com/user-attachments/assets/2cccb4ae-53c8-4313-8017-da90692ecb78" />
 
-
-**Execution Screenshot:**  
-[Insert screenshot of query execution here]
-
 **Database State After Delete:**  
 [Insert screenshot of Equipment_Malfunction and Maintenance_Technician tables after deletion here]
 
@@ -857,3 +853,140 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 <img width="260" alt="A3" src="https://github.com/user-attachments/assets/c63ee4e0-4088-4c7b-a9f0-f567b26faef8" />
 <img width="661" alt="A4" src="https://github.com/user-attachments/assets/db5aacca-64bd-4103-a97d-17d087a751e7" />
 
+
+
+
+🧩 Integration Phase – README (Stage C)
+1. DSD & ERD Diagrams (in correct order)
+🔹 1. DSD of the Received Department
+<img width="275" alt="DSD_new" src="https://github.com/user-attachments/assets/48b53d97-5e8a-4e00-aa75-45004bfb9f51" />
+
+
+🔹 2. ERD of the Received Department
+<img width="546" alt="ERD_new" src="https://github.com/user-attachments/assets/9312212f-62fd-41d3-8f26-ba4f14a3c419" />
+
+
+🔹 3. Combined ERD (After Integration)
+<img width="1001" alt="ERD_together" src="https://github.com/user-attachments/assets/492e0725-0232-4169-b811-c41b8ac7c486" />
+
+
+🔹 4. DSD After Integration
+<img width="368" alt="DSD_together" src="https://github.com/user-attachments/assets/63efe6c6-1be7-4a7c-8143-a376670af467" />
+
+
+2. Integration Decisions
+During the integration process, several key decisions were made to ensure a smooth and logical merger between the two systems:
+
+Table Naming Conflicts: When tables from both departments had similar purposes or names, we chose unified, descriptive names to maintain consistency.
+
+Foreign Key Adjustments: We added and modified foreign keys to reflect the new relationships between the integrated data.
+
+Normalization & Redundancy: Ensured normalized structure while avoiding data duplication across the merged ERD.
+
+Date Formats & Types: Aligned data types and formats for fields like dates, notes, and text fields to ensure compatibility.
+
+3. Description of the Process and Commands Used
+The process included these steps:
+
+Restore Received Schema: Loaded the backup file of the received system into pgAdmin.
+
+Draw DSD: Manually documented the received system’s structure into a DSD diagram.
+
+Reverse ERD: Built a reverse-engineered ERD from the DSD.
+
+Integrate with Our System: Merged our ERD with the received one into a new joint ERD.
+
+Update the Schema: Used SQL commands such as ALTER TABLE, ADD COLUMN, and ADD FOREIGN KEY to apply integration changes directly.
+
+Verify Data Integrity: Ensured data was preserved in both schemas and all relationships work as expected.
+
+4. Views and Queries
+📌 View 1: Training_Log_Summary
+Description:
+This view joins training logs with training programs, showing each trainee’s sessions, duration, and repetitions.
+
+View Code:
+sql
+Copy code
+CREATE OR REPLACE VIEW Training_Log_Summary AS
+SELECT 
+    tl.logid,
+    tl.traineeid,
+    tp.programname AS program_name,
+    tl.duration,
+    tl.repetitions
+FROM 
+    traininglog tl
+JOIN 
+    trainingprogram tp ON tl.programid = tp.programid;
+Sample Output (10 Rows):
+sql
+Copy code
+SELECT * FROM Training_Log_Summary LIMIT 10;
+(תמונת מסך של הפלט – 10 שורות ראשונות של Training_Log_Summary)
+
+Query 1 – All Sessions of a Specific Trainee
+Description: Retrieves all training records of trainee with ID 101.
+
+sql
+Copy code
+SELECT *
+FROM Training_Log_Summary
+WHERE traineeid = 101;
+(תמונת מסך של פלט השאילתה)
+
+Query 2 – Average Duration by Program
+Description: Calculates the average duration of each training program.
+
+sql
+Copy code
+SELECT program_name, AVG(duration) AS average_duration
+FROM Training_Log_Summary
+GROUP BY program_name;
+(תמונת מסך של פלט השאילתה)
+
+📌 View 2: Equipment_Safety_Status_View
+Description:
+This view shows equipment details along with their latest safety inspection info (inspection date, result, notes). Left join is used in case some equipment haven't been inspected yet.
+
+View Code:
+sql
+Copy code
+CREATE OR REPLACE VIEW Equipment_Safety_Status_View AS
+SELECT 
+    E.equipmentid,
+    E.equipmentname,
+    E.installationdate,
+    E.safetystatus,
+    SC.inspectiondate,
+    SC.result,
+    SC.notes
+FROM 
+    equipment E
+LEFT JOIN 
+    safety_check SC ON E.equipmentid = SC.equipmentid;
+Sample Output (10 Rows):
+sql
+Copy code
+SELECT * FROM Equipment_Safety_Status_View LIMIT 10;
+(תמונת מסך של הפלט – 10 שורות ראשונות של Equipment_Safety_Status_View)
+
+Query 1 – Equipment That Failed Last Check
+Description: Lists all equipment where the safety check result is 'Fail'.
+
+sql
+Copy code
+SELECT *
+FROM Equipment_Safety_Status_View
+WHERE result = 'Fail';
+(תמונת מסך של פלט השאילתה)
+
+Query 2 – Equipment Without Inspections
+Description: Lists equipment that has never undergone a safety inspection.
+
+sql
+Copy code
+SELECT *
+FROM Equipment_Safety_Status_View
+WHERE inspectiondate IS NULL;
+(תמונת מסך של פלט השאילתה)
