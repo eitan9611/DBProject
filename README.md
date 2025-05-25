@@ -886,14 +886,9 @@ Step 1: Aligning the Equipment Tables
 At first glance, the only table shared between both databases is the Equipment table. However, its structure differs between our system and Noam’s:
 
 Our Equipment Table:
-
-sql
-Copy code
 equipment_id, equipment_name, equipment_type, safety_status, installation_date, standard_id
-Noam’s Equipment Table:
 
-sql
-Copy code
+Noam’s Equipment Table:
 equipmentid, eqname, purchasedate, conditionstatus, exerciseid
 To perform a proper integration, we first needed to:
 
@@ -905,8 +900,7 @@ Add any missing columns that were present in Noam’s schema but not in ours.
 
 We finalized the schema as follows and then imported the data using dblink:
 
-sql
-Copy code
+
 CREATE EXTENSION IF NOT EXISTS dblink;
 
 INSERT INTO equipment (equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid)
@@ -926,9 +920,6 @@ Step 2: Importing Noam’s Remaining Tables
 Since the rest of Noam’s tables are independent and don't conflict with ours, we simply created their schema on our side and imported the data:
 
 Table Creation:
-
-sql
-Copy code
 CREATE TABLE trainee (
     traineeid serial PRIMARY KEY,
     firstname VARCHAR(50),
@@ -1008,22 +999,16 @@ To solve this, we manually added a shared column — phone_number — by prepari
 
 Then, we created the unified Employee table:
 
-sql
-Copy code
 CREATE TABLE employee (
     employeeid SERIAL PRIMARY KEY,
     phone_number VARCHAR(30) UNIQUE NOT NULL
 );
 We added a new employeeid foreign key column to both child tables:
 
-sql
-Copy code
 ALTER TABLE trainer ADD COLUMN employeeid INTEGER UNIQUE;
 ALTER TABLE maintenance_technician ADD COLUMN employeeid INTEGER UNIQUE;
 Next, we extracted phone numbers from both tables and inserted them into employee:
 
-sql
-Copy code
 INSERT INTO employee (phone_number)
 SELECT DISTINCT phone_number FROM (
     SELECT phone_number FROM trainer
@@ -1032,8 +1017,6 @@ SELECT DISTINCT phone_number FROM (
 ) AS unique_phones;
 We then updated both tables to link to the correct employeeid from the new employee table:
 
-sql
-Copy code
 UPDATE trainer T
 SET employeeid = E.employeeid
 FROM employee E
@@ -1045,8 +1028,6 @@ FROM employee E
 WHERE M.phone_number = E.phone_number;
 Finally, we enforced referential integrity by adding foreign key constraints:
 
-sql
-Copy code
 ALTER TABLE trainer
 ADD CONSTRAINT fk_trainer_employee
 FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
@@ -1082,8 +1063,6 @@ LEFT JOIN
 Query 1 – All Sessions of a Specific Trainee
 Description: Retrieves all training records of trainee with ID 101.
 
-sql
-Copy code
 SELECT *
 FROM Training_Log_Summary
 WHERE traineeid = 101;
@@ -1093,8 +1072,6 @@ WHERE traineeid = 101;
 Query 2 – Average Duration by Program
 Description: Calculates the average duration of each training program.
 
-sql
-Copy code
 SELECT program_name, AVG(duration) AS average_duration
 FROM Training_Log_Summary
 GROUP BY program_name;
@@ -1106,8 +1083,6 @@ Description:
 This view shows equipment details along with their latest safety inspection info (inspection date, result, notes). Left join is used in case some equipment haven't been inspected yet.
 
 View Code:
-sql
-Copy code
 CREATE OR REPLACE VIEW Equipment_Safety_Status_View AS
 SELECT 
     E.equipmentid,
@@ -1122,8 +1097,6 @@ FROM
 LEFT JOIN 
     safety_check SC ON E.equipmentid = SC.equipmentid;
 Sample Output (10 Rows):
-sql
-Copy code
 SELECT * FROM Equipment_Safety_Status_View LIMIT 10;
 <img width="422" alt="SelectB" src="https://github.com/user-attachments/assets/9f7e1d65-015a-403b-8363-f2e080624faa" />
 
@@ -1131,8 +1104,6 @@ SELECT * FROM Equipment_Safety_Status_View LIMIT 10;
 Query 1 – Equipment That Failed Last Check
 Description: Lists all equipment where the safety check result is 'Fail'.
 
-sql
-Copy code
 SELECT *
 FROM Equipment_Safety_Status_View
 WHERE result = 'Fail';
@@ -1142,8 +1113,6 @@ WHERE result = 'Fail';
 Query 2 – Equipment Without Inspections
 Description: Lists equipment that has never undergone a safety inspection.
 
-sql
-Copy code
 SELECT *
 FROM Equipment_Safety_Status_View
 WHERE inspectiondate IS NULL;
