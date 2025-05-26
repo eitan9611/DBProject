@@ -1137,7 +1137,8 @@ LEFT JOIN
 <img width="893" alt="SelectA" src="https://github.com/user-attachments/assets/12779283-d3c5-473e-92e9-4d59352598d2" />
 
 
-##### Query 1 – This query selects specific columns from the Equipment_Safety_Status_View view, focusing on equipment name, installation date, safety status, and details from the safety inspection. It also renames the Inspector_Notes column to Inspector_Comments for clarity. The results are ordered by the safety status, making it easier to prioritize or group equipment based on their current safety condition.
+##### Query 1 –
+This query selects specific columns from the Equipment_Safety_Status_View view, focusing on equipment name, installation date, safety status, and details from the safety inspection. It also renames the Inspector_Notes column to Inspector_Comments for clarity. The results are ordered by the safety status, making it easier to prioritize or group equipment based on their current safety condition.
 
 SELECT 
     Equipment_Name,
@@ -1154,7 +1155,8 @@ ORDER BY
 <img width="783" alt="View1A" src="https://github.com/user-attachments/assets/a8c4a5f0-cfbb-4e39-9079-b523317ec856" />
 
 
-##### Query 2 – This query groups the equipment by their **safety status** and provides a summary for each group:
+##### Query 2 –
+This query groups the equipment by their **safety status** and provides a summary for each group:
 
 * `TotalEquipment`: the total number of equipment items with that safety status.
 * `PassedInspections`: how many of them passed their last inspection.
