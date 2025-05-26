@@ -961,8 +961,6 @@ CREATE TABLE exercise (
 );
 Data Insertion via dblink:
 
-sql
-Copy code
 -- trainee
 INSERT INTO trainee (traineeid, firstname, lastname, email, phone, dateofbirth)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
@@ -1038,7 +1036,7 @@ FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
 
 
 4. Views and Queries
-📌 View 1: Training_Log_Summary
+📌 View 1: Equipment_Safety_Status_View
 Description:
 This SQL command creates a view named `Equipment_Safety_Status_View` that combines data from the `Equipment` and `Safety_Check` tables. It uses a **LEFT JOIN** to show all equipment items, along with their safety status and any related safety check details (inspection date, result, and notes). If no safety check exists for an item, those fields will be `NULL`. This view helps monitor equipment safety in one unified query.
 
@@ -1060,61 +1058,99 @@ LEFT JOIN
 <img width="893" alt="SelectA" src="https://github.com/user-attachments/assets/12779283-d3c5-473e-92e9-4d59352598d2" />
 
 
-Query 1 – All Sessions of a Specific Trainee
-Description: Retrieves all training records of trainee with ID 101.
+Query 1 – This query selects specific columns from the Equipment_Safety_Status_View view, focusing on equipment name, installation date, safety status, and details from the safety inspection. It also renames the Inspector_Notes column to Inspector_Comments for clarity. The results are ordered by the safety status, making it easier to prioritize or group equipment based on their current safety condition.
 
-SELECT *
-FROM Training_Log_Summary
-WHERE traineeid = 101;
+SELECT 
+    Equipment_Name,
+    Installation_Date,
+    Safety_Status,
+    Inspection_Date,
+    Result,
+    Inspector_Notes AS Inspector_Comments
+FROM 
+    Equipment_Safety_Status_View
+ORDER BY 
+    Safety_Status
+    
 <img width="783" alt="View1A" src="https://github.com/user-attachments/assets/a8c4a5f0-cfbb-4e39-9079-b523317ec856" />
 
 
-Query 2 – Average Duration by Program
-Description: Calculates the average duration of each training program.
+Query 2 – This query groups the equipment by their **safety status** and provides a summary for each group:
 
-SELECT program_name, AVG(duration) AS average_duration
-FROM Training_Log_Summary
-GROUP BY program_name;
+* `TotalEquipment`: the total number of equipment items with that safety status.
+* `PassedInspections`: how many of them passed their last inspection.
+* `FailedInspections`: how many failed.
+* `NotInspected`: how many have not been inspected yet (i.e., inspection result is `NULL`).
+
+This helps assess the overall safety situation for different types of equipment status.
+
+
+SELECT 
+    v.Safety_Status,
+    COUNT(*) AS TotalEquipment,
+    COUNT(CASE WHEN Result = 'Pass' THEN 1 END) AS PassedInspections,
+    COUNT(CASE WHEN Result = 'Fail' THEN 1 END) AS FailedInspections,
+    COUNT(CASE WHEN Result IS NULL THEN 1 END) AS NotInspected
+FROM 
+    Equipment_Safety_Status_View AS v
+GROUP BY 
+    v.Safety_Status;
+    
 <img width="483" alt="View1B" src="https://github.com/user-attachments/assets/d472b9bb-4112-426c-939d-b628fb2a324c" />
 
 
-📌 View 2: Equipment_Safety_Status_View
+📌 View 2: Training_Log_Summary
 Description:
-This view shows equipment details along with their latest safety inspection info (inspection date, result, notes). Left join is used in case some equipment haven't been inspected yet.
+This view, named Training_Log_Summary, combines data from the traininglog and trainingprogram tables to provide a clearer summary of training activities.
+For each training log entry, it shows:
+logid: the unique ID of the log entry
+traineeid: the trainee who performed the training
+program_name: the name of the program (retrieved from the trainingprogram table)
+duration: how long the training session lasted
+repetitions: how many repetitions were done
+It makes it easier to analyze training performance with program context included.
 
 View Code:
-CREATE OR REPLACE VIEW Equipment_Safety_Status_View AS
+CREATE VIEW Training_Log_Summary AS
 SELECT 
-    E.equipmentid,
-    E.equipmentname,
-    E.installationdate,
-    E.safetystatus,
-    SC.inspectiondate,
-    SC.result,
-    SC.notes
+    tl.logid,
+    tl.traineeid,
+    tp.programname AS program_name,
+    tl.duration,
+    tl.repetitions
 FROM 
-    equipment E
-LEFT JOIN 
-    safety_check SC ON E.equipmentid = SC.equipmentid;
-Sample Output (10 Rows):
-SELECT * FROM Equipment_Safety_Status_View LIMIT 10;
+    traininglog tl
+JOIN 
+    trainingprogram tp ON tl.programid = tp.programid;
+    
 <img width="422" alt="SelectB" src="https://github.com/user-attachments/assets/9f7e1d65-015a-403b-8363-f2e080624faa" />
 
 
-Query 1 – Equipment That Failed Last Check
-Description: Lists all equipment where the safety check result is 'Fail'.
+Query 1 – This query calculates the average duration of training sessions for each training program.
+It selects program_name from the Training_Log_Summary view.
+It uses AVG(duration) to compute the average duration of sessions in each program.
+It groups the results by program_name to ensure the average is calculated per program.
+The result shows how much time trainees spend on average in each training program.
 
-SELECT *
-FROM Equipment_Safety_Status_View
-WHERE result = 'Fail';
+	SELECT 
+    program_name, 
+    AVG(duration) AS average_duration
+FROM 
+    Training_Log_Summary
+GROUP BY 
+    program_name;
+
 <img width="275" alt="View2A" src="https://github.com/user-attachments/assets/b64a5386-cc36-4636-a40e-3d0901efaac1" />
 
 
-Query 2 – Equipment Without Inspections
-Description: Lists equipment that has never undergone a safety inspection.
+Query 2 – This query retrieves all training session records for a specific trainee.
+It selects all columns (*) from the Training_Log_Summary view.
+It filters the results using WHERE traineeid = 236779343, so only records related to this trainee will be returned.
+The result will show all the programs this trainee participated in, along with the session duration and number of repetitions.
 
 SELECT *
-FROM Equipment_Safety_Status_View
-WHERE inspectiondate IS NULL;
+FROM Training_Log_Summary
+WHERE traineeid = 236779343;
+
 <img width="369" alt="View2B" src="https://github.com/user-attachments/assets/cc77dbed-9d34-4a80-b5ed-fbe57c5946a2" />
 
