@@ -871,15 +871,21 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 
 
 🔹 4. DSD After Integration
+
 <img width="368" alt="DSD_together" src="https://github.com/user-attachments/assets/63efe6c6-1be7-4a7c-8143-a376670af467" />
 
 
-2.We were tasked with integrating our database with Noam’s database.
+### 2. We were tasked with integrating our database with Noam’s database.
+
 In our initial analysis of the combined ERD diagrams, we identified two key aspects that required attention:
 
-Harmonizing the Equipment tables from both databases to create a unified structure.
+- **Harmonizing the Equipment tables** from both databases to create a unified structure.
 
-Creating a shared Employee table from which both Noam’s Trainer table and our Maintenance_Technician table would inherit, as both represent types of employees. This integration was based on common conceptual attributes.
+- **Creating a shared `Employee` table**, from which both Noam’s `Trainer` table and our `Maintenance_Technician` table would inherit, as both represent types of employees.  
+  This integration was based on common conceptual attributes.
+
+
+
 
 3.Integration Process Between Our Database and Noam’s
 Step 1: Aligning the Equipment Tables
