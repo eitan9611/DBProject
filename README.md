@@ -1204,7 +1204,8 @@ JOIN
 <img width="422" alt="SelectB" src="https://github.com/user-attachments/assets/9f7e1d65-015a-403b-8363-f2e080624faa" />
 
 
-##### Query 1 – This query calculates the average duration of training sessions for each training program.
+##### Query 1 – 
+This query calculates the average duration of training sessions for each training program.
 It selects program_name from the Training_Log_Summary view.
 It uses AVG(duration) to compute the average duration of sessions in each program.
 It groups the results by program_name to ensure the average is calculated per program.
@@ -1221,7 +1222,8 @@ GROUP BY
 <img width="275" alt="View2A" src="https://github.com/user-attachments/assets/b64a5386-cc36-4636-a40e-3d0901efaac1" />
 
 
-##### Query 2 – This query retrieves all training session records for a specific trainee.
+##### Query 2 –
+This query retrieves all training session records for a specific trainee.
 It selects all columns (*) from the Training_Log_Summary view.
 It filters the results using WHERE traineeid = 236779343, so only records related to this trainee will be returned.
 The result will show all the programs this trainee participated in, along with the session duration and number of repetitions.
