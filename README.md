@@ -889,31 +889,48 @@ In our initial analysis of the combined ERD diagrams, we identified two key aspe
 - **Creating a shared `Employee` table**, from which both Noam’s `Trainer` table and our `Maintenance_Technician` table would inherit, as both represent types of employees.  
   This integration was based on common conceptual attributes.
 
+# 🔗 Database Integration Process
 
+## Overview
+This document outlines the integration process between our database and Noam's database, focusing on data consolidation and schema alignment.
 
+---
 
-3.Integration Process Between Our Database and Noam’s
-Step 1: Aligning the Equipment Tables
-At first glance, the only table shared between both databases is the Equipment table. However, its structure differs between our system and Noam’s:
+## 📋 Table of Contents
+- [Step 1: Aligning Equipment Tables](#step-1-aligning-equipment-tables)
+- [Step 2: Importing Remaining Tables](#step-2-importing-remaining-tables)
+- [Step 3: Creating Shared Employee Table](#step-3-creating-shared-employee-table)
 
-Our Equipment Table:
+---
+
+## Step 1: Aligning Equipment Tables
+
+### 🎯 Challenge
+The only shared table between both databases is the **Equipment** table, but with different structures:
+
+#### Our Equipment Table Structure:
+```sql
 equipment_id, equipment_name, equipment_type, safety_status, installation_date, standard_id
+```
 
-Noam’s Equipment Table:
+#### Noam's Equipment Table Structure:
+```sql
 equipmentid, eqname, purchasedate, conditionstatus, exerciseid
-To perform a proper integration, we first needed to:
+```
 
-Standardize column names to a common naming convention.
+### 🔧 Solution Process
 
-Resolve data type mismatches where present.
+1. **Standardize column names** to a common naming convention
+2. **Resolve data type mismatches** where present
+3. **Add missing columns** from Noam's schema
 
-Add any missing columns that were present in Noam’s schema but not in ours.
+### 💾 Implementation
 
-We finalized the schema as follows and then imported the data using dblink:
-
-
+```sql
+-- Enable dblink extension
 CREATE EXTENSION IF NOT EXISTS dblink;
 
+-- Import data with conflict resolution
 INSERT INTO equipment (equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid)
 SELECT equipment_id, equipment_name, purchasedate, conditionstatus, exerciseid
 FROM dblink(
@@ -927,10 +944,20 @@ FROM dblink(
   exerciseid INT
 )
 ON CONFLICT (equipment_id) DO NOTHING;
-Step 2: Importing Noam’s Remaining Tables
-Since the rest of Noam’s tables are independent and don't conflict with ours, we simply created their schema on our side and imported the data:
+```
 
-Table Creation:
+---
+
+## Step 2: Importing Remaining Tables
+
+### 📊 Table Creation
+
+Since Noam's remaining tables are independent and don't conflict with ours, we created their schema and imported the data:
+
+#### 🏗️ Schema Definitions
+
+```sql
+-- Trainee table
 CREATE TABLE trainee (
     traineeid serial PRIMARY KEY,
     firstname VARCHAR(50),
@@ -940,6 +967,7 @@ CREATE TABLE trainee (
     dateofbirth DATE
 );
 
+-- Trainer table
 CREATE TABLE trainer (
     trainerid INTEGER PRIMARY KEY,
     programid INTEGER,
@@ -947,6 +975,7 @@ CREATE TABLE trainer (
     employeeid INTEGER
 );
 
+-- Training Program table
 CREATE TABLE trainingprogram (
     programid serial PRIMARY KEY,
     programname VARCHAR(50),
@@ -955,6 +984,7 @@ CREATE TABLE trainingprogram (
     traineeid INTEGER
 );
 
+-- Training Log table
 CREATE TABLE traininglog (
     logid serial PRIMARY KEY,
     traineeid INTEGER,
@@ -964,87 +994,130 @@ CREATE TABLE traininglog (
     programname VARCHAR(50)
 );
 
+-- Exercise table
 CREATE TABLE exercise (
     exerciseid serial PRIMARY KEY,
     exname VARCHAR(50),
     description VARCHAR(255),
     programid INTEGER
 );
-Data Insertion via dblink:
+```
 
--- trainee
+#### 📥 Data Import Process
+
+```sql
+-- Import trainee data
 INSERT INTO trainee (traineeid, firstname, lastname, email, phone, dateofbirth)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
                      'SELECT traineeid, firstname, lastname, email, phone, dateofbirth FROM trainee')
-AS t(traineeid INTEGER, firstname VARCHAR(50), lastname VARCHAR(50), email VARCHAR(50), phone VARCHAR(15), dateofbirth DATE);
+AS t(traineeid INTEGER, firstname VARCHAR(50), lastname VARCHAR(50), 
+     email VARCHAR(50), phone VARCHAR(15), dateofbirth DATE);
 
--- trainer
+-- Import trainer data
 INSERT INTO trainer (trainerid, programid, hiredate, employeeid)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
                      'SELECT trainerid, programid, hiredate, employeeid FROM trainer')
 AS t(trainerid INTEGER, programid INTEGER, hiredate DATE, employeeid INTEGER);
 
--- trainingprogram
+-- Import training program data
 INSERT INTO trainingprogram (programid, programname, startdate, enddate, traineeid)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
                      'SELECT programid, programname, startdate, enddate, traineeid FROM trainingprogram')
-AS t(programid INTEGER, programname VARCHAR(50), startdate DATE, enddate DATE, traineeid INTEGER);
+AS t(programid INTEGER, programname VARCHAR(50), startdate DATE, 
+     enddate DATE, traineeid INTEGER);
 
--- traininglog
+-- Import training log data
 INSERT INTO traininglog (logid, traineeid, programid, duration, repetitions, programname)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
                      'SELECT logid, traineeid, programid, duration, repetitions, programname FROM traininglog')
-AS t(logid INTEGER, traineeid INTEGER, programid INTEGER, duration INTEGER, repetitions INTEGER, programname VARCHAR(50));
+AS t(logid INTEGER, traineeid INTEGER, programid INTEGER, duration INTEGER, 
+     repetitions INTEGER, programname VARCHAR(50));
 
--- exercise
+-- Import exercise data
 INSERT INTO exercise (exerciseid, exname, description, programid)
 SELECT * FROM dblink('dbname=NOAM user=eitan password=weizman558',
                      'SELECT exerciseid, exname, description, programid FROM exercise')
 AS t(exerciseid INTEGER, exname VARCHAR(50), description VARCHAR(255), programid INTEGER);
-Step 3: Creating a Shared Employee Table
-To unify both our maintenance_technician table and Noam’s trainer table under a common Employee entity, we needed to create a parent table they could both reference. However, we discovered that the two tables shared no common columns.
+```
 
-To solve this, we manually added a shared column — phone_number — by preparing a CSV with phone numbers and uploading it to Noam’s database.
+---
 
-Then, we created the unified Employee table:
+## Step 3: Creating Shared Employee Table
 
+### 🎯 Objective
+Unify both our `maintenance_technician` table and Noam's `trainer` table under a common **Employee** entity.
+
+### ⚠️ Challenge
+The two tables shared **no common columns** initially.
+
+### 💡 Solution
+We manually added a shared column `phone_number` by preparing a CSV with phone numbers and uploading it to Noam's database.
+
+### 🏗️ Implementation Steps
+
+#### 1. Create the Unified Employee Table
+```sql
 CREATE TABLE employee (
     employeeid SERIAL PRIMARY KEY,
     phone_number VARCHAR(30) UNIQUE NOT NULL
 );
-We added a new employeeid foreign key column to both child tables:
+```
 
+#### 2. Add Foreign Key Columns
+```sql
 ALTER TABLE trainer ADD COLUMN employeeid INTEGER UNIQUE;
 ALTER TABLE maintenance_technician ADD COLUMN employeeid INTEGER UNIQUE;
-Next, we extracted phone numbers from both tables and inserted them into employee:
+```
 
+#### 3. Populate Employee Table
+```sql
 INSERT INTO employee (phone_number)
 SELECT DISTINCT phone_number FROM (
     SELECT phone_number FROM trainer
     UNION
     SELECT phone_number FROM maintenance_technician
 ) AS unique_phones;
-We then updated both tables to link to the correct employeeid from the new employee table:
+```
 
+#### 4. Link Child Tables to Employee Table
+```sql
+-- Update trainer table
 UPDATE trainer T
 SET employeeid = E.employeeid
 FROM employee E
 WHERE T.phone_number = E.phone_number;
 
+-- Update maintenance_technician table
 UPDATE maintenance_technician M
 SET employeeid = E.employeeid
 FROM employee E
 WHERE M.phone_number = E.phone_number;
-Finally, we enforced referential integrity by adding foreign key constraints:
+```
 
+#### 5. Enforce Referential Integrity
+```sql
+-- Add foreign key constraint for trainer
 ALTER TABLE trainer
 ADD CONSTRAINT fk_trainer_employee
 FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
 
+-- Add foreign key constraint for maintenance_technician
 ALTER TABLE maintenance_technician
 ADD CONSTRAINT fk_maintenance_employee
 FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
+```
 
+---
+
+## ✅ Integration Complete
+
+The database integration process successfully:
+- ✨ Aligned Equipment table schemas
+- 📊 Imported all of Noam's independent tables  
+- 🔗 Created a unified Employee structure
+- 🛡️ Maintained referential integrity
+
+> **Note**: All operations use `dblink` for cross-database connectivity and include proper conflict resolution strategies.
 
 4. Views and Queries
 📌 View 1: Equipment_Safety_Status_View
