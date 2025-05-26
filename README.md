@@ -856,23 +856,28 @@ SELECT Equipment_ID, Equipment_Name, Safety_Status FROM Equipment WHERE Equipmen
 
 
 
- **Integration Phase – README (Stage C)**
-1. DSD & ERD Diagrams (in correct order)
-🔹 1. DSD of the Received Department
+## Integration Phase – README (Stage C)
+
+### 1. DSD & ERD Diagrams (in correct order)
+
+🔹 **1. DSD of the Received Department**  
 <img width="275" alt="DSD_new" src="https://github.com/user-attachments/assets/48b53d97-5e8a-4e00-aa75-45004bfb9f51" />
 
+<br/>
 
-🔹 2. ERD of the Received Department
+🔹 **2. ERD of the Received Department**  
 <img width="546" alt="ERD_new" src="https://github.com/user-attachments/assets/9312212f-62fd-41d3-8f26-ba4f14a3c419" />
 
+<br/>
 
-🔹 3. Combined ERD (After Integration)
+🔹 **3. Combined ERD (After Integration)**  
 <img width="1001" alt="ERD_together" src="https://github.com/user-attachments/assets/492e0725-0232-4169-b811-c41b8ac7c486" />
 
+<br/>
 
-🔹 4. DSD After Integration
-
+🔹 **4. DSD After Integration**  
 <img width="368" alt="DSD_together" src="https://github.com/user-attachments/assets/63efe6c6-1be7-4a7c-8143-a376670af467" />
+
 
 
 ### 2. We were tasked with integrating our database with Noam’s database.
