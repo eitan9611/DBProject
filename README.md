@@ -1115,9 +1115,8 @@ The database integration process successfully:
 
 > **Note**: All operations use `dblink` for cross-database connectivity and include proper conflict resolution strategies.
 
-4. Views and Queries
-📌 View 1: Equipment_Safety_Status_View
-Description:
+ ### 4. Views and Queries
+#### 📌 View 1: Equipment_Safety_Status_View
 This SQL command creates a view named `Equipment_Safety_Status_View` that combines data from the `Equipment` and `Safety_Check` tables. It uses a **LEFT JOIN** to show all equipment items, along with their safety status and any related safety check details (inspection date, result, and notes). If no safety check exists for an item, those fields will be `NULL`. This view helps monitor equipment safety in one unified query.
 
 
@@ -1138,7 +1137,7 @@ LEFT JOIN
 <img width="893" alt="SelectA" src="https://github.com/user-attachments/assets/12779283-d3c5-473e-92e9-4d59352598d2" />
 
 
-Query 1 – This query selects specific columns from the Equipment_Safety_Status_View view, focusing on equipment name, installation date, safety status, and details from the safety inspection. It also renames the Inspector_Notes column to Inspector_Comments for clarity. The results are ordered by the safety status, making it easier to prioritize or group equipment based on their current safety condition.
+##### Query 1 – This query selects specific columns from the Equipment_Safety_Status_View view, focusing on equipment name, installation date, safety status, and details from the safety inspection. It also renames the Inspector_Notes column to Inspector_Comments for clarity. The results are ordered by the safety status, making it easier to prioritize or group equipment based on their current safety condition.
 
 SELECT 
     Equipment_Name,
@@ -1155,7 +1154,7 @@ ORDER BY
 <img width="783" alt="View1A" src="https://github.com/user-attachments/assets/a8c4a5f0-cfbb-4e39-9079-b523317ec856" />
 
 
-Query 2 – This query groups the equipment by their **safety status** and provides a summary for each group:
+##### Query 2 – This query groups the equipment by their **safety status** and provides a summary for each group:
 
 * `TotalEquipment`: the total number of equipment items with that safety status.
 * `PassedInspections`: how many of them passed their last inspection.
@@ -1179,8 +1178,7 @@ GROUP BY
 <img width="483" alt="View1B" src="https://github.com/user-attachments/assets/d472b9bb-4112-426c-939d-b628fb2a324c" />
 
 
-📌 View 2: Training_Log_Summary
-Description:
+#### 📌 View 2: Training_Log_Summary
 This view, named Training_Log_Summary, combines data from the traininglog and trainingprogram tables to provide a clearer summary of training activities.
 For each training log entry, it shows:
 logid: the unique ID of the log entry
@@ -1206,7 +1204,7 @@ JOIN
 <img width="422" alt="SelectB" src="https://github.com/user-attachments/assets/9f7e1d65-015a-403b-8363-f2e080624faa" />
 
 
-Query 1 – This query calculates the average duration of training sessions for each training program.
+##### Query 1 – This query calculates the average duration of training sessions for each training program.
 It selects program_name from the Training_Log_Summary view.
 It uses AVG(duration) to compute the average duration of sessions in each program.
 It groups the results by program_name to ensure the average is calculated per program.
@@ -1223,7 +1221,7 @@ GROUP BY
 <img width="275" alt="View2A" src="https://github.com/user-attachments/assets/b64a5386-cc36-4636-a40e-3d0901efaac1" />
 
 
-Query 2 – This query retrieves all training session records for a specific trainee.
+##### Query 2 – This query retrieves all training session records for a specific trainee.
 It selects all columns (*) from the Training_Log_Summary view.
 It filters the results using WHERE traineeid = 236779343, so only records related to this trainee will be returned.
 The result will show all the programs this trainee participated in, along with the session duration and number of repetitions.
