@@ -889,42 +889,38 @@ In our initial analysis of the combined ERD diagrams, we identified two key aspe
 - **Creating a shared `Employee` table**, from which both Noam’s `Trainer` table and our `Maintenance_Technician` table would inherit, as both represent types of employees.  
   This integration was based on common conceptual attributes.
 
-# 🔗 Database Integration Process
+### 3. Database Integration Process
 
-## Overview
-This document outlines the integration process between our database and Noam's database, focusing on data consolidation and schema alignment.
 
----
-
-## 📋 Table of Contents
+####  Table of Contents
 - [Step 1: Aligning Equipment Tables](#step-1-aligning-equipment-tables)
 - [Step 2: Importing Remaining Tables](#step-2-importing-remaining-tables)
 - [Step 3: Creating Shared Employee Table](#step-3-creating-shared-employee-table)
 
 ---
 
-## Step 1: Aligning Equipment Tables
+### Step 1: Aligning Equipment Tables
 
-### 🎯 Challenge
+####  Challenge
 The only shared table between both databases is the **Equipment** table, but with different structures:
 
-#### Our Equipment Table Structure:
+##### Our Equipment Table Structure:
 ```sql
 equipment_id, equipment_name, equipment_type, safety_status, installation_date, standard_id
 ```
 
-#### Noam's Equipment Table Structure:
+##### Noam's Equipment Table Structure:
 ```sql
 equipmentid, eqname, purchasedate, conditionstatus, exerciseid
 ```
 
-### 🔧 Solution Process
+####  Solution Process
 
 1. **Standardize column names** to a common naming convention
 2. **Resolve data type mismatches** where present
 3. **Add missing columns** from Noam's schema
 
-### 💾 Implementation
+####  Implementation
 
 ```sql
 -- Enable dblink extension
@@ -948,13 +944,13 @@ ON CONFLICT (equipment_id) DO NOTHING;
 
 ---
 
-## Step 2: Importing Remaining Tables
+### Step 2: Importing Remaining Tables
 
-### 📊 Table Creation
+####  Table Creation
 
 Since Noam's remaining tables are independent and don't conflict with ours, we created their schema and imported the data:
 
-#### 🏗️ Schema Definitions
+#####  Schema Definitions
 
 ```sql
 -- Trainee table
@@ -1003,7 +999,7 @@ CREATE TABLE exercise (
 );
 ```
 
-#### 📥 Data Import Process
+##### Data Import Process
 
 ```sql
 -- Import trainee data
@@ -1042,20 +1038,20 @@ AS t(exerciseid INTEGER, exname VARCHAR(50), description VARCHAR(255), programid
 
 ---
 
-## Step 3: Creating Shared Employee Table
+### Step 3: Creating Shared Employee Table
 
-### 🎯 Objective
+#### Objective
 Unify both our `maintenance_technician` table and Noam's `trainer` table under a common **Employee** entity.
 
-### ⚠️ Challenge
+#### Challenge
 The two tables shared **no common columns** initially.
 
-### 💡 Solution
+#### Solution
 We manually added a shared column `phone_number` by preparing a CSV with phone numbers and uploading it to Noam's database.
 
-### 🏗️ Implementation Steps
+#### Implementation Steps
 
-#### 1. Create the Unified Employee Table
+##### 1. Create the Unified Employee Table
 ```sql
 CREATE TABLE employee (
     employeeid SERIAL PRIMARY KEY,
@@ -1063,13 +1059,13 @@ CREATE TABLE employee (
 );
 ```
 
-#### 2. Add Foreign Key Columns
+##### 2. Add Foreign Key Columns
 ```sql
 ALTER TABLE trainer ADD COLUMN employeeid INTEGER UNIQUE;
 ALTER TABLE maintenance_technician ADD COLUMN employeeid INTEGER UNIQUE;
 ```
 
-#### 3. Populate Employee Table
+##### 3. Populate Employee Table
 ```sql
 INSERT INTO employee (phone_number)
 SELECT DISTINCT phone_number FROM (
@@ -1079,7 +1075,7 @@ SELECT DISTINCT phone_number FROM (
 ) AS unique_phones;
 ```
 
-#### 4. Link Child Tables to Employee Table
+##### 4. Link Child Tables to Employee Table
 ```sql
 -- Update trainer table
 UPDATE trainer T
@@ -1094,7 +1090,7 @@ FROM employee E
 WHERE M.phone_number = E.phone_number;
 ```
 
-#### 5. Enforce Referential Integrity
+##### 5. Enforce Referential Integrity
 ```sql
 -- Add foreign key constraint for trainer
 ALTER TABLE trainer
@@ -1109,13 +1105,13 @@ FOREIGN KEY (employeeid) REFERENCES employee(employeeid);
 
 ---
 
-## ✅ Integration Complete
+### Integration Complete
 
 The database integration process successfully:
-- ✨ Aligned Equipment table schemas
-- 📊 Imported all of Noam's independent tables  
-- 🔗 Created a unified Employee structure
-- 🛡️ Maintained referential integrity
+-  Aligned Equipment table schemas
+-  Imported all of Noam's independent tables  
+-  Created a unified Employee structure
+-  Maintained referential integrity
 
 > **Note**: All operations use `dblink` for cross-database connectivity and include proper conflict resolution strategies.
 
