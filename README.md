@@ -1237,34 +1237,42 @@ WHERE traineeid = 236779343;
 <img width="369" alt="View2B" src="https://github.com/user-attachments/assets/cc77dbed-9d34-4a80-b5ed-fbe57c5946a2" />
 
 
-## Project Stage D Report – PL/pgSQL Programming
+## Project Stage D Report
 
 This document contains a detailed report for stage D of the project. It includes PL/pgSQL functions, procedures, main programs, and triggers, alongside explanations, code, and proof of successful execution.
 
 ### ① Function 1:
 
 * Description:
-  This function receives an equipment ID and calculates the average cost of all repairs performed on that equipment. It uses a SELECT INTO to aggregate the average cost from the maintenance\_record table. If no records are found, it raises an exception. This function showcases DML, IF branching, exception handling, and variable usage.
+This function calculates the efficiency of a technician based on their repair history. It first counts how many malfunctions are assigned to the given technician. If the total is zero, it returns 0. Otherwise, it counts how many of those malfunctions are associated with equipment marked as "Fixed", and returns the percentage of successful repairs. The function uses DML (SELECT INTO), IF condition, JOIN, type casting, and basic arithmetic.
+
 
 * Code:
 
 ```sql
-CREATE OR REPLACE FUNCTION calculate_average_maintenance_cost(eid TEXT)
-RETURNS NUMERIC AS $$
+CREATE OR REPLACE FUNCTION get_technician_efficiency(tid VARCHAR)
+RETURNS FLOAT AS $$
 DECLARE
-    avg_cost NUMERIC;
+    total INT;
+    fixed INT;
 BEGIN
-    SELECT AVG(cost) INTO avg_cost
-    FROM maintenance_record
-    WHERE equipment_id = eid;
+    SELECT COUNT(*) INTO total
+    FROM equipment_malfunction
+    WHERE technician_id = tid;
 
-    IF avg_cost IS NULL THEN
-        RAISE EXCEPTION 'No maintenance records found for equipment ID %', eid;
+    IF total = 0 THEN
+        RETURN 0;
     END IF;
 
-    RETURN avg_cost;
+    SELECT COUNT(*) INTO fixed
+    FROM equipment_malfunction em
+    JOIN equipment e ON e.equipment_id = em.equipment_id
+    WHERE em.technician_id = tid AND e.safety_status = 'Fixed';
+
+    RETURN (fixed::FLOAT / total) * 100;
 END;
 $$ LANGUAGE plpgsql;
+
 ```
 
 ### ② Procedure 1:
@@ -1330,21 +1338,30 @@ $$;
 ### ④ Function 2:
 
 * Description:
-  This function accepts a status string (e.g., 'Operational') and returns a refcursor to iterate over all equipment with that status. Demonstrates use of explicit cursor and returning a refcursor.
+This function returns a refcursor containing all equipment of a given type that requires attention (i.e., has a safety status of 'NeedFix' or 'NotWorking'). If the input type is NULL, it raises an exception. The function demonstrates parameter validation, conditional logic (IF), explicit cursor usage, refcursor return, and a SELECT query with a WHERE clause.
+
 
 * Code:
 
 ```sql
-CREATE OR REPLACE FUNCTION get_equipment_with_status(status TEXT)
+CREATE OR REPLACE FUNCTION get_equipment_needing_attention(e_type VARCHAR)
 RETURNS refcursor AS $$
 DECLARE
     ref refcursor;
 BEGIN
+    IF e_type IS NULL THEN
+        RAISE EXCEPTION 'Equipment type must not be NULL';
+    END IF;
+
     OPEN ref FOR
-        SELECT * FROM equipment WHERE safety_status = status;
+    SELECT * FROM equipment
+    WHERE equipment_type = e_type
+      AND safety_status IN ('NeedFix', 'NotWorking');
+
     RETURN ref;
 END;
 $$ LANGUAGE plpgsql;
+
 ```
 
 ### ⑤ Procedure 2:
