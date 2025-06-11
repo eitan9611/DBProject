@@ -1265,12 +1265,7 @@ BEGIN
     RETURN avg_cost;
 END;
 $$ LANGUAGE plpgsql;
-```
 
-* Proof of Execution:
-  📸 הוסף כאן צילום מסך או תוצאת SELECT של ההרצה
-
----
 
 ### ② Procedure 1: assign\_random\_technician
 
@@ -1300,12 +1295,7 @@ BEGIN
     WHERE malfunction_id = mid;
 END;
 $$;
-```
 
-* Proof of Execution:
-  📸 הוסף כאן UPDATE שמראה שהטכנאי עודכן
-
----
 
 ### ③ Main Program A
 
@@ -1327,7 +1317,8 @@ $$;
 ```
 
 * Proof:
-  📸 הוסף כאן תוצאה של NOTICE ועדכון טכנאי
+  <img width="631" alt="1" src="https://github.com/user-attachments/assets/f54e88a4-cbe6-4b25-bf11-e6f918f78170" />
+
 
 ---
 
@@ -1349,12 +1340,7 @@ BEGIN
     RETURN ref;
 END;
 $$ LANGUAGE plpgsql;
-```
 
-* Proof of Execution:
-  📸 הוסף כאן תוצאת FETCH מה־cursor
-
----
 
 ### ⑤ Procedure 2: bulk\_set\_inspection\_pending
 
@@ -1382,12 +1368,6 @@ BEGIN
     END LOOP;
 END;
 $$;
-```
-
-* Proof of Execution:
-  📸 הוסף כאן SELECT שמראה שינויי סטטוס
-
----
 
 ### ⑥ Main Program B
 
@@ -1414,7 +1394,7 @@ $$;
 ```
 
 * Proof:
-  📸 הוסף כאן NOTICEים מה-DO + SELECT של ציוד עם status 'Pending'
+<img width="402" alt="2" src="https://github.com/user-attachments/assets/09b3be2b-c08c-4e44-ba13-0ccb75d724b1" />
 
 ---
 
