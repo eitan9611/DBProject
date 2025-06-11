@@ -1270,7 +1270,7 @@ $$ LANGUAGE plpgsql;
 ### ② Procedure 1:
 
 * Description:
-  This procedure assigns a random available technician to a specific malfunction (identified by malfunction\_id). It uses SELECT INTO to choose a technician randomly, checks for presence using IF NOT FOUND, and updates the equipment\_malfunction table. Demonstrates use of RECORDs, DML, branching and exceptions.
+This procedure assigns a random exercise to each piece of equipment that currently has no exercise assigned (i.e., exerciseid is NULL). It loops through all such equipment, selects a random exercise from the exercise table, and updates the equipment with that exercise ID. A notice is printed for each assignment. The procedure uses an implicit cursor, SELECT INTO, IF condition, DML operations, and record variables.
 
 * Code:
 
@@ -1304,7 +1304,7 @@ $$;
 ### ③ Main Program A
 
 * Description:
-  This main program calls the function calculate\_average\_maintenance\_cost and then uses the result in a NOTICE message. It also calls the assign\_random\_technician procedure for a malfunction ID. Demonstrates function and procedure usage, variable handling, and interaction with the DB.
+This main program first calls a procedure that assigns random exercises to all unassigned equipment. Then, it calls a function that calculates the efficiency (as a percentage) of a specific technician based on the number of malfunctions they handled that were marked as fixed. Finally, it prints the result using RAISE NOTICE. The program demonstrates procedure and function calls, variable assignment, and output display.
 
 * Code:
 
