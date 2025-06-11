@@ -1236,3 +1236,271 @@ WHERE traineeid = 236779343;
 
 <img width="369" alt="View2B" src="https://github.com/user-attachments/assets/cc77dbed-9d34-4a80-b5ed-fbe57c5946a2" />
 
+
+## Project Stage D Report – PL/pgSQL Programming
+
+This document contains a detailed report for stage D of the project. It includes PL/pgSQL functions, procedures, main programs, and triggers, alongside explanations, code, and proof of successful execution.
+
+### ① Function 1: calculate\_average\_maintenance\_cost
+
+* Description:
+  This function receives an equipment ID and calculates the average cost of all repairs performed on that equipment. It uses a SELECT INTO to aggregate the average cost from the maintenance\_record table. If no records are found, it raises an exception. This function showcases DML, IF branching, exception handling, and variable usage.
+
+* Code:
+
+```sql
+CREATE OR REPLACE FUNCTION calculate_average_maintenance_cost(eid TEXT)
+RETURNS NUMERIC AS $$
+DECLARE
+    avg_cost NUMERIC;
+BEGIN
+    SELECT AVG(cost) INTO avg_cost
+    FROM maintenance_record
+    WHERE equipment_id = eid;
+
+    IF avg_cost IS NULL THEN
+        RAISE EXCEPTION 'No maintenance records found for equipment ID %', eid;
+    END IF;
+
+    RETURN avg_cost;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+* Proof of Execution:
+  📸 הוסף כאן צילום מסך או תוצאת SELECT של ההרצה
+
+---
+
+### ② Procedure 1: assign\_random\_technician
+
+* Description:
+  This procedure assigns a random available technician to a specific malfunction (identified by malfunction\_id). It uses SELECT INTO to choose a technician randomly, checks for presence using IF NOT FOUND, and updates the equipment\_malfunction table. Demonstrates use of RECORDs, DML, branching and exceptions.
+
+* Code:
+
+```sql
+CREATE OR REPLACE PROCEDURE assign_random_technician(mid TEXT)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    tech RECORD;
+BEGIN
+    SELECT * INTO tech
+    FROM maintenance_technician
+    ORDER BY RANDOM()
+    LIMIT 1;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'No technician found.';
+    END IF;
+
+    UPDATE equipment_malfunction
+    SET technician_id = tech.technician_id
+    WHERE malfunction_id = mid;
+END;
+$$;
+```
+
+* Proof of Execution:
+  📸 הוסף כאן UPDATE שמראה שהטכנאי עודכן
+
+---
+
+### ③ Main Program A
+
+* Description:
+  This main program calls the function calculate\_average\_maintenance\_cost and then uses the result in a NOTICE message. It also calls the assign\_random\_technician procedure for a malfunction ID. Demonstrates function and procedure usage, variable handling, and interaction with the DB.
+
+* Code:
+
+```sql
+DO $$
+DECLARE
+    avg_cost NUMERIC;
+BEGIN
+    avg_cost := calculate_average_maintenance_cost('1');
+    RAISE NOTICE 'Average maintenance cost: %', avg_cost;
+    CALL assign_random_technician('MALF_001');
+END;
+$$;
+```
+
+* Proof:
+  📸 הוסף כאן תוצאה של NOTICE ועדכון טכנאי
+
+---
+
+### ④ Function 2: get\_equipment\_with\_status
+
+* Description:
+  This function accepts a status string (e.g., 'Operational') and returns a refcursor to iterate over all equipment with that status. Demonstrates use of explicit cursor and returning a refcursor.
+
+* Code:
+
+```sql
+CREATE OR REPLACE FUNCTION get_equipment_with_status(status TEXT)
+RETURNS refcursor AS $$
+DECLARE
+    ref refcursor;
+BEGIN
+    OPEN ref FOR
+        SELECT * FROM equipment WHERE safety_status = status;
+    RETURN ref;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+* Proof of Execution:
+  📸 הוסף כאן תוצאת FETCH מה־cursor
+
+---
+
+### ⑤ Procedure 2: bulk\_set\_inspection\_pending
+
+* Description:
+  This procedure loops through all equipment items and checks whether each one has been inspected in the last 180 days. If not, it sets its safety\_status to 'Pending'. Demonstrates use of implicit cursors, loops, conditionals, and DML.
+
+* Code:
+
+```sql
+CREATE OR REPLACE PROCEDURE bulk_set_inspection_pending()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    eq RECORD;
+BEGIN
+    FOR eq IN SELECT * FROM equipment LOOP
+        UPDATE equipment
+        SET safety_status = 'Pending'
+        WHERE equipment_id = eq.equipment_id
+        AND NOT EXISTS (
+            SELECT 1 FROM safety_check
+            WHERE equipment_id = eq.equipment_id
+              AND inspection_date > CURRENT_DATE - INTERVAL '180 days'
+        );
+    END LOOP;
+END;
+$$;
+```
+
+* Proof of Execution:
+  📸 הוסף כאן SELECT שמראה שינויי סטטוס
+
+---
+
+### ⑥ Main Program B
+
+* Description:
+  This program demonstrates usage of a function that returns a refcursor and a procedure that updates the database. It iterates over all equipment with status 'Operational' and prints each one, then calls the bulk procedure to update statuses to 'Pending' if needed.
+
+* Code:
+
+```sql
+DO $$
+DECLARE
+    ref refcursor;
+    rec equipment%ROWTYPE;
+BEGIN
+    ref := get_equipment_with_status('Operational');
+    LOOP
+        FETCH ref INTO rec;
+        EXIT WHEN NOT FOUND;
+        RAISE NOTICE 'Operational equipment: %', rec.equipment_id;
+    END LOOP;
+    CALL bulk_set_inspection_pending();
+END;
+$$;
+```
+
+* Proof:
+  📸 הוסף כאן NOTICEים מה-DO + SELECT של ציוד עם status 'Pending'
+
+---
+
+### Triggers
+
+---
+
+### Trigger 1: trg\_check\_equipment\_standard
+
+* Description:
+  This BEFORE trigger fires on INSERT or UPDATE on equipment. It checks whether the standard\_id specified in the new row exists in safety\_standard. If not, it raises an exception. This ensures referential integrity in logic layer (even if not enforced by FK). Includes branching, exception handling, and uses RECORD.
+
+* Trigger Function Code:
+
+```sql
+CREATE OR REPLACE FUNCTION check_equipment_standard()
+RETURNS trigger AS $$
+DECLARE
+    std RECORD;
+BEGIN
+    SELECT * INTO std FROM safety_standard WHERE standard_id = NEW.standard_id;
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Standard ID % does not exist.', NEW.standard_id;
+    END IF;
+    RAISE NOTICE 'Inserted equipment with standard %: %', std.standard_id, std.standard_name;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+* Trigger:
+
+```sql
+CREATE TRIGGER trg_check_equipment_standard
+BEFORE INSERT OR UPDATE ON equipment
+FOR EACH ROW
+EXECUTE FUNCTION check_equipment_standard();
+```
+
+* Proof:
+  📸 הוסף כאן ניסיון הוספה עם תקן קיים ולא קיים
+
+---
+
+### Trigger 2: trg\_auto\_log\_safety\_check\_failure
+
+* Description:
+  This AFTER INSERT trigger listens to safety\_check. If the result of a safety check is 'Fail', it automatically logs a malfunction to equipment\_malfunction with a generated ID, random technician, and default severity. Demonstrates DML, IF, RECORD, exception, and logic encapsulation.
+
+* Trigger Function Code:
+
+```sql
+CREATE OR REPLACE FUNCTION auto_log_malfunction_on_failed_check()
+RETURNS trigger AS $$
+DECLARE
+    tech RECORD;
+    new_id TEXT;
+BEGIN
+    IF NEW.result = 'Fail' THEN
+        SELECT * INTO tech FROM maintenance_technician ORDER BY RANDOM() LIMIT 1;
+        IF NOT FOUND THEN
+            RAISE EXCEPTION 'No technician found.';
+        END IF;
+        new_id := 'MALF_' || NEW.check_id || '_' || EXTRACT(EPOCH FROM now())::BIGINT;
+        INSERT INTO equipment_malfunction (
+            malfunction_id, report_date, malfunction_severity, repair_status,
+            equipment_id, technician_id
+        ) VALUES (
+            new_id, CURRENT_DATE, 'Medium', 'Pending', NEW.equipment_id, tech.technician_id
+        );
+        RAISE NOTICE 'Auto-malfunction % created for equipment %.', new_id, NEW.equipment_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+* Trigger:
+
+```sql
+CREATE TRIGGER trg_auto_log_safety_check_failure
+AFTER INSERT ON safety_check
+FOR EACH ROW
+EXECUTE FUNCTION auto_log_malfunction_on_failed_check();
+```
+
+* Proof:
+  📸 הוסף כאן INSERT של safety\_check עם 'Fail' ובדיקה שנוצר malfunction
+
