@@ -1350,7 +1350,8 @@ $$ LANGUAGE plpgsql;
 ### ⑤ Procedure 2:
 
 * Description:
-  This procedure loops through all equipment items and checks whether each one has been inspected in the last 180 days. If not, it sets its safety\_status to 'Pending'. Demonstrates use of implicit cursors, loops, conditionals, and DML.
+This procedure finds all malfunctions reported more than 180 days ago and updates their equipment and malfunction status to "Fixed". It loops through the results, performs two UPDATE statements for each record, and prints a notice. If an error occurs during the update, it catches the exception and prints an error message. The procedure uses an implicit cursor, DML operations, exception handling, and a record variable.
+
 
 * Code:
 
