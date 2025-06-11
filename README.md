@@ -1241,7 +1241,7 @@ WHERE traineeid = 236779343;
 
 This document contains a detailed report for stage D of the project. It includes PL/pgSQL functions, procedures, main programs, and triggers, alongside explanations, code, and proof of successful execution.
 
-### ① Function 1: calculate\_average\_maintenance\_cost
+### ① Function 1:
 
 * Description:
   This function receives an equipment ID and calculates the average cost of all repairs performed on that equipment. It uses a SELECT INTO to aggregate the average cost from the maintenance\_record table. If no records are found, it raises an exception. This function showcases DML, IF branching, exception handling, and variable usage.
@@ -1267,7 +1267,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### ② Procedure 1: assign\_random\_technician
+### ② Procedure 1:
 
 * Description:
   This procedure assigns a random available technician to a specific malfunction (identified by malfunction\_id). It uses SELECT INTO to choose a technician randomly, checks for presence using IF NOT FOUND, and updates the equipment\_malfunction table. Demonstrates use of RECORDs, DML, branching and exceptions.
@@ -1275,26 +1275,30 @@ $$ LANGUAGE plpgsql;
 * Code:
 
 ```sql
-CREATE OR REPLACE PROCEDURE assign_random_technician(mid TEXT)
+CREATE OR REPLACE PROCEDURE assign_equipment_to_exercise()
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    tech RECORD;
+    rec RECORD;
+    random_exercise INT;
 BEGIN
-    SELECT * INTO tech
-    FROM maintenance_technician
-    ORDER BY RANDOM()
-    LIMIT 1;
+    FOR rec IN
+        SELECT * FROM equipment WHERE exerciseid IS NULL
+    LOOP
+        SELECT exerciseid INTO random_exercise
+        FROM exercise ORDER BY RANDOM() LIMIT 1;
 
-    IF NOT FOUND THEN
-        RAISE EXCEPTION 'No technician found.';
-    END IF;
+        IF random_exercise IS NOT NULL THEN
+            UPDATE equipment
+            SET exerciseid = random_exercise
+            WHERE equipment_id = rec.equipment_id;
 
-    UPDATE equipment_malfunction
-    SET technician_id = tech.technician_id
-    WHERE malfunction_id = mid;
+            RAISE NOTICE 'Assigned equipment % to exercise %', rec.equipment_id, random_exercise;
+        END IF;
+    END LOOP;
 END;
 $$;
+
 ```
 
 ### ③ Main Program A
@@ -1307,11 +1311,12 @@ $$;
 ```sql
 DO $$
 DECLARE
-    avg_cost NUMERIC;
+    percent FLOAT;
 BEGIN
-    avg_cost := calculate_average_maintenance_cost('1');
-    RAISE NOTICE 'Average maintenance cost: %', avg_cost;
-    CALL assign_random_technician('MALF_001');
+    CALL assign_equipment_to_exercise();
+
+    percent := get_technician_efficiency('tech001');
+    RAISE NOTICE 'Technician efficiency: %%%', percent;
 END;
 $$;
 ```
@@ -1322,7 +1327,7 @@ $$;
 
 ---
 
-### ④ Function 2: get\_equipment\_with\_status
+### ④ Function 2:
 
 * Description:
   This function accepts a status string (e.g., 'Operational') and returns a refcursor to iterate over all equipment with that status. Demonstrates use of explicit cursor and returning a refcursor.
@@ -1342,7 +1347,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### ⑤ Procedure 2: bulk\_set\_inspection\_pending
+### ⑤ Procedure 2:
 
 * Description:
   This procedure loops through all equipment items and checks whether each one has been inspected in the last 180 days. If not, it sets its safety\_status to 'Pending'. Demonstrates use of implicit cursors, loops, conditionals, and DML.
@@ -1350,47 +1355,61 @@ $$ LANGUAGE plpgsql;
 * Code:
 
 ```sql
-CREATE OR REPLACE PROCEDURE bulk_set_inspection_pending()
+CREATE OR REPLACE PROCEDURE mark_old_malfunctions_as_fixed()
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    eq RECORD;
+    rec RECORD;
 BEGIN
-    FOR eq IN SELECT * FROM equipment LOOP
-        UPDATE equipment
-        SET safety_status = 'Pending'
-        WHERE equipment_id = eq.equipment_id
-        AND NOT EXISTS (
-            SELECT 1 FROM safety_check
-            WHERE equipment_id = eq.equipment_id
-              AND inspection_date > CURRENT_DATE - INTERVAL '180 days'
-        );
+    FOR rec IN
+        SELECT equipment_id FROM equipment_malfunction
+        WHERE report_date < CURRENT_DATE - INTERVAL '180 days'
+    LOOP
+        BEGIN
+            UPDATE equipment
+            SET safety_status = 'Fixed'
+            WHERE equipment_id = rec.equipment_id;
+
+            UPDATE equipment_malfunction
+            SET repair_status = 'Fixed'
+            WHERE equipment_id = rec.equipment_id;
+
+            RAISE NOTICE 'Marked equipment % as Fixed', rec.equipment_id;
+        EXCEPTION
+            WHEN OTHERS THEN
+                RAISE NOTICE 'Failed to update equipment %: %', rec.equipment_id, SQLERRM;
+        END;
     END LOOP;
 END;
 $$;
+
 ```
 ### ⑥ Main Program B
 
 * Description:
-  This program demonstrates usage of a function that returns a refcursor and a procedure that updates the database. It iterates over all equipment with status 'Operational' and prints each one, then calls the bulk procedure to update statuses to 'Pending' if needed.
+This main program calls a procedure that marks old malfunctions as fixed, then calls a function that returns a refcursor containing all 'dumbbells' that still require maintenance. It loops through the results and prints the name of each equipment needing attention. The program demonstrates use of procedures, functions, refcursors, loops, and record variables.
+
 
 * Code:
 
 ```sql
 DO $$
 DECLARE
-    ref refcursor;
-    rec equipment%ROWTYPE;
+    cur refcursor;
+    eq equipment%ROWTYPE;
 BEGIN
-    ref := get_equipment_with_status('Operational');
+    CALL mark_old_malfunctions_as_fixed();
+
+    cur := get_equipment_needing_attention('dumbbells');
     LOOP
-        FETCH ref INTO rec;
+        FETCH cur INTO eq;
         EXIT WHEN NOT FOUND;
-        RAISE NOTICE 'Operational equipment: %', rec.equipment_id;
+        RAISE NOTICE 'Equipment needing fix: %', eq.equipment_name;
     END LOOP;
-    CALL bulk_set_inspection_pending();
+    CLOSE cur;
 END;
 $$;
+
 ```
 
 * Proof:
