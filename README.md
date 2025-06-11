@@ -1317,7 +1317,7 @@ $$;
 ```
 
 * Proof:
-  <img width="631" alt="1" src="https://github.com/user-attachments/assets/f54e88a4-cbe6-4b25-bf11-e6f918f78170" />
+  <img width="402" alt="2" src="https://github.com/user-attachments/assets/09b3be2b-c08c-4e44-ba13-0ccb75d724b1" />
 
 
 ---
@@ -1394,8 +1394,7 @@ $$;
 ```
 
 * Proof:
-<img width="402" alt="2" src="https://github.com/user-attachments/assets/09b3be2b-c08c-4e44-ba13-0ccb75d724b1" />
-
+  <img width="631" alt="1" src="https://github.com/user-attachments/assets/f54e88a4-cbe6-4b25-bf11-e6f918f78170" />
 ---
 
 ### Triggers
