@@ -1265,7 +1265,7 @@ BEGIN
     RETURN avg_cost;
 END;
 $$ LANGUAGE plpgsql;
-
+```
 
 ### ② Procedure 1: assign\_random\_technician
 
@@ -1295,7 +1295,7 @@ BEGIN
     WHERE malfunction_id = mid;
 END;
 $$;
-
+```
 
 ### ③ Main Program A
 
@@ -1340,7 +1340,7 @@ BEGIN
     RETURN ref;
 END;
 $$ LANGUAGE plpgsql;
-
+```
 
 ### ⑤ Procedure 2: bulk\_set\_inspection\_pending
 
@@ -1368,7 +1368,7 @@ BEGIN
     END LOOP;
 END;
 $$;
-
+```
 ### ⑥ Main Program B
 
 * Description:
