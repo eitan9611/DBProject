@@ -1581,30 +1581,36 @@ http://localhost:5000
 
 * Displays key system statistics
 * Links to all system screens, including the Procedures & Queries page
+![WhatsApp Image 2025-07-31 at 11 35 58](https://github.com/user-attachments/assets/fe26253f-cc37-472a-a758-50f696c5c225)
+
 
 ### 👤 Trainees
 
 * Full CRUD on trainees
 * Age is calculated automatically from birthdate
-* 🔽 Screenshot: `screenshots/trainee_edit.png`
+  ![WhatsApp Image 2025-07-31 at 11 25 22](https://github.com/user-attachments/assets/6a0d0ab0-30f0-4883-928c-67ade589109d)
+
 
 ### 🏋️ Equipment
 
 * Full CRUD on equipment: name, type, safety status, standard, installation/purchase date, related exercise
-* 🔽 Screenshot: `screenshots/equipment_edit.png`
+![WhatsApp Image 2025-07-31 at 11 25 44 (1)](https://github.com/user-attachments/assets/b083a92e-289e-453c-944b-333396ab38da)
+
 
 ### ⚒️ Malfunctions
 
 * Displays reported equipment malfunctions
 * Allows adding and deleting malfunctions
-* 🔽 Screenshot: `screenshots/malfunctions_view.png`
+  ![WhatsApp Image 2025-07-31 at 11 25 22 (1)](https://github.com/user-attachments/assets/c16247b1-71d8-41f3-8812-50fb8aeb8f4f)
+
 
 ### 📊 Analytics
 
 * Pie chart showing equipment type distribution
 * Bar chart for monthly malfunctions
 * Participation chart for training programs
-* 🔽 Screenshot: `screenshots/analytics_dashboard.png`
+  ![WhatsApp Image 2025-07-31 at 11 25 21](https://github.com/user-attachments/assets/bdcd65ea-84e4-46c0-a228-f8f23e52d1fa)
+
 
 ### ⚙️ Procedures & Queries
 
@@ -1613,7 +1619,7 @@ http://localhost:5000
   * 2 PL/pgSQL procedures/functions
   * 2 advanced SQL queries from earlier project stages
 * Accessible only through the Dashboard
-* 🔽 Screenshot: `screenshots/procedures_page.png`
+  ![WhatsApp Image 2025-07-31 at 11 25 44](https://github.com/user-attachments/assets/8ae634d4-c50a-47bc-a11c-dc600f815e65)
 
 ---
 
