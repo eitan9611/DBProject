@@ -1517,5 +1517,120 @@ FOR EACH ROW
 EXECUTE FUNCTION auto_log_malfunction_on_failed_check();
 ```
 
+# 🧰 Gym Management System - APP | STAGE 5 
+
+## ✨ Overview
+
+A full-featured graphical user interface was developed for the Gym Management System application, enabling complete management of gym-related entities such as trainees, equipment, malfunctions, and advanced analytics. The application is directly integrated with a PostgreSQL database.
+
+---
+
+## 💪 Tools & Technologies
+
+* **Programming Language**: Python 3
+* **Backend Framework**: Flask
+* **ORM**: SQLAlchemy
+* **Database**: PostgreSQL 15
+* **Schema Management**: Flask-Migrate
+* **UI Libraries**: Bootstrap 5, Jinja2
+* **Database GUI**: pgAdmin 4
+* **AI Assistance**:
+
+  * We used **Claude** (Anthropic) for help with HTML, Jinja templates, and advice on structuring Python and SQL code.
+
+---
+
+## 🚀 Application Setup
+
+### 1. Run PostgreSQL
+
+```bash
+docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+```
+
+### 2. Run pgAdmin (optional)
+
+```bash
+docker run -p 5050:80 \
+  -e PGADMIN_DEFAULT_EMAIL=admin@admin.com \
+  -e PGADMIN_DEFAULT_PASSWORD=admin \
+  -d dpage/pgadmin4
+```
+
+### 3. Launch the Flask App
+
+```bash
+cd GymManagementSystem
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+```
+
+### 4. Access the App
+
+```
+http://localhost:5000
+```
+
+---
+
+## 📆 Application Structure & Screens
+
+### 🏠 Dashboard
+
+* Displays key system statistics
+* Links to all system screens, including the Procedures & Queries page
+
+### 👤 Trainees
+
+* Full CRUD on trainees
+* Age is calculated automatically from birthdate
+* 🔽 Screenshot: `screenshots/trainee_edit.png`
+
+### 🏋️ Equipment
+
+* Full CRUD on equipment: name, type, safety status, standard, installation/purchase date, related exercise
+* 🔽 Screenshot: `screenshots/equipment_edit.png`
+
+### ⚒️ Malfunctions
+
+* Displays reported equipment malfunctions
+* Allows adding and deleting malfunctions
+* 🔽 Screenshot: `screenshots/malfunctions_view.png`
+
+### 📊 Analytics
+
+* Pie chart showing equipment type distribution
+* Bar chart for monthly malfunctions
+* Participation chart for training programs
+* 🔽 Screenshot: `screenshots/analytics_dashboard.png`
+
+### ⚙️ Procedures & Queries
+
+* Executes:
+
+  * 2 PL/pgSQL procedures/functions
+  * 2 advanced SQL queries from earlier project stages
+* Accessible only through the Dashboard
+* 🔽 Screenshot: `screenshots/procedures_page.png`
+
+---
+
+## 🖼️ Visual Documentation
+
+All screenshots are located in the `screenshots/` folder, following the screen mapping:
+
+* `trainee_edit.png`
+* `equipment_edit.png`
+* `malfunctions_view.png`
+* `analytics_dashboard.png`
+* `procedures_page.png`
+
+---
+
+For any questions, please contact the development team.
+
+
 
 
