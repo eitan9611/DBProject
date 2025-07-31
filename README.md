@@ -1,21 +1,23 @@
-# Gym Equipment Safety Management System – Project Report (Stage A) stage B - 110
+# Gym Equipment Safety Management System – Project Report
 
-## Submitted by:
+## (Stage A)
+
+### Submitted by:
 
 * **Eliya Masa**
 * **Eitan Weizman**
 
-## System Name:
+### System Name:
 
 **Gym Equipment Safety Management System**
 
-## Selected Unit:
+### Selected Unit:
 
 **Equipment Safety**
 
 ---
 
-## Table of Contents
+### Table of Contents
 
 1. Introduction
 2. System Overview
