@@ -1470,8 +1470,6 @@ FOR EACH ROW
 EXECUTE FUNCTION check_equipment_standard();
 ```
 
-* Proof:
-  📸 הוסף כאן ניסיון הוספה עם תקן קיים ולא קיים
 
 ---
 
@@ -1517,6 +1515,5 @@ FOR EACH ROW
 EXECUTE FUNCTION auto_log_malfunction_on_failed_check();
 ```
 
-* Proof:
-  📸 הוסף כאן INSERT של safety\_check עם 'Fail' ובדיקה שנוצר malfunction
+
 
