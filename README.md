@@ -1617,18 +1617,6 @@ http://localhost:5000
 
 ---
 
-## 🖼️ Visual Documentation
-
-All screenshots are located in the `screenshots/` folder, following the screen mapping:
-
-* `trainee_edit.png`
-* `equipment_edit.png`
-* `malfunctions_view.png`
-* `analytics_dashboard.png`
-* `procedures_page.png`
-
----
-
 For any questions, please contact the development team.
 
 
