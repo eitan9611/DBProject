@@ -1,6 +1,6 @@
 # Gym Equipment Safety Management System – Project Report
 
-## (Stage A)
+## Stage A
 
 ### Submitted by:
 
